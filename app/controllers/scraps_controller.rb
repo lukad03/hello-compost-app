@@ -1,12 +1,14 @@
 class ScrapsController < ApplicationController
 
+  respond_to :html, :json
+
   def index
     @scraps = Scrap.all
   end
 
   def new
     @scrap = Scrap.new
-    @users = User.where('username' => true)
+    @scrap.build_user
   end
 
   def create
@@ -23,6 +25,6 @@ class ScrapsController < ApplicationController
   private
 
   def scrap_params
-    params.require(:scrap).permit(:weight, user_attributes: [ :id, :username])
+    params.require(:scrap).permit(:weight, :user_id)
   end
 end

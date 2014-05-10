@@ -1,12 +1,15 @@
+<script type="text/javascript">
+  $(document).ready(function() {
+    $("#scrap_user_id").select2();
+  });
+</script>
+
 <header>
 <h1>Add Scraps</h1>
 </header>
 
 <%= simple_form_for @scrap do |scrap| %>
-  <%= scrap.input :weight, label: 'How much does your waste weigh?' %>
-
-  <%= scrap.association :user, as: :string, :label_method => :username, :value_method => :user_id %>
-
-
+  <%= scrap.input :weight, label: 'How much does your waste weigh?', required: true %>
+  <%= scrap.select :user_id, User.all.collect {|x| [x.username, x.id]}, {} %>
   <%= scrap.button :submit %>
 <% end %>

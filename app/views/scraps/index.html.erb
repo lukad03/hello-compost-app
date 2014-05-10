@@ -2,8 +2,9 @@
 <h1>Scraps</h1>
 </header>
 
-<%= @scraps.each do |scrap| %>
+<% @scraps.each do |scrap| %>
   <div class="scrap">
-    <p><%= scrap.weight %></p>
+    <p><%= scrap.weight %>lbs</p>
+    <p><%= scrap.user.username %></p>
   </div>
 <% end %>

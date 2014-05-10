@@ -1,4 +1,4 @@
 class Scrap < ActiveRecord::Base
-  belongs_to :user, :class_name => "User", :foreign_key => "user_id"
+  belongs_to :user
   accepts_nested_attributes_for :user
 end

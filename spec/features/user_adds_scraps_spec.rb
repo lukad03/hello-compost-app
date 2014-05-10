@@ -9,7 +9,7 @@ feature 'Scrap creation' do
 
     visit new_scrap_path
     fill_in 'scrap_weight', with: '2.27'
-    fill_in 'user_username', with: 'resident'
+    select('resident', :from => 'scrap_user_id')
 
     click_button 'Create Scrap'
 
