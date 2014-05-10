@@ -1,0 +1,12 @@
+<header>
+<h1>Add Scraps</h1>
+</header>
+
+<%= simple_form_for @scrap do |scrap| %>
+  <%= scrap.input :weight, label: 'How much does your waste weigh?' %>
+
+  <%= scrap.association :user, as: :string, :label_method => :username, :value_method => :user_id %>
+
+
+  <%= scrap.button :submit %>
+<% end %>

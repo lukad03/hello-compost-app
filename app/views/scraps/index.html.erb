@@ -1,0 +1,9 @@
+<header>
+<h1>Scraps</h1>
+</header>
+
+<%= @scraps.each do |scrap| %>
+  <div class="scrap">
+    <p><%= scrap.weight %></p>
+  </div>
+<% end %>

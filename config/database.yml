@@ -1,0 +1,26 @@
+development:
+  adapter: postgresql
+  database: hello_compost_development
+  encoding: unicode
+  pool: 5
+  password: password1
+
+# Warning: The database defined as "test" will be erased and
+# re-generated from your development database when you run "rake".
+# Do not set this db to the same as development or production.
+test:
+  adapter: postgresql
+  database: hello_compost_test
+  encoding: unicode
+  user: hello_compost
+  host: localhost
+  pool: 5
+  timeout: 5000
+  password: password1
+
+production:
+  adapter: postgresql
+  database: hello_compost_production
+  encoding: unicode
+  pool: 5
+  timeout: 5000
