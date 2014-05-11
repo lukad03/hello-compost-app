@@ -1,6 +1,6 @@
 class ScrapsController < ApplicationController
-
   respond_to :html, :json
+  require 'CreditConverter'
 
   def index
     @scraps = Scrap.all
@@ -13,7 +13,8 @@ class ScrapsController < ApplicationController
 
   def create
     @scrap = Scrap.create(scrap_params)
-    if @scrap.save
+    @credit = CreditConverter.create(@scrap)
+    if @credit.save
       flash[:success] = 'Scrap saved'
       redirect_to scraps_path
     else
