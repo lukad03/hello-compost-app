@@ -16,6 +16,10 @@ feature 'Scrap creation' do
     expect(page).to have_text('resident')
     expect(page).to have_text('2.27')
 
+    visit '/users/resident'
+    expect(page).to have_text('resident')
+    expect(page).to have_text('2 Credits')
+
   end
 
 end

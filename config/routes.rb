@@ -6,10 +6,13 @@ Rails.application.routes.draw do
   # You can have the root of your site routed with "root"
   root 'welcome#index'
 
-  resources :users, only: [:index, :username]
   resources :scraps
   resources :organizations
   resources :locations
+
+  devise_scope :user do
+    get '/users/:username' => 'users#show', as: 'user_profile'
+  end
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
