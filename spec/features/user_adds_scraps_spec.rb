@@ -2,14 +2,14 @@ require "spec_helper"
 
 feature 'Scrap creation' do
 
-  scenario 'user logs in and adds scraps' do
+  scenario 'User logs in and adds scraps' do
     farmer = FactoryGirl.create( :user, username: 'lukad03' )
     participant = FactoryGirl.create( :user, username: 'resident' )
     login_as(farmer, scope: :user)
 
     visit new_scrap_path
     fill_in 'scrap_weight', with: '2.27'
-    select('resident', :from => 'scrap_user_id')
+    select 'resident', from: 'scrap_user_id'
 
     click_button 'Create Scrap'
 
