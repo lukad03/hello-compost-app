@@ -7,37 +7,85 @@
   <div style='width: 100%;'>
     <div id="map" style='width: 100%; height: 400px;'></div>
   </div>
+  <div class="address-input">
+    <%= location.input :address, label: 'Location Address', maxlength: 100 %>
+    <a id="address-search"class="button address-search" href="#">Search</a>
+  </div>
+  <%= location.input :latitude, :as => :hidden %>
+  <%= location.input :longitude, :as => :hidden %>
 
   <%= location.button :submit, value: "Add Location" %>
 <% end %>
 
 <script type="text/javascript">
-  var handler = Gmaps.build('Google');
-handler.buildMap({ provider: { }, internal: {id: 'map'}}, function(){
-  var json_data = [
-    {
-      id:  1,
-      lat: 0,
-      lng: 0,
-      infowindow: "<div style='color:red;'>Foo</div>" //this html is properly disaplayed
-    }
-  ];
+var address_search = "#location_address";
+var latval = "#location_longitude";
+var longval = "#location_latitude";
+var geocoder;
+var map;
+var marker;
 
-  //create draggable markers (pass google maps options aas a second arg)
-  var markers = handler.addMarkers(json_data, { draggable: true});
 
-  //add markers to original json
-  _.each(json_data, function(json, index){
-    json.marker = markers[index];
+function initialize() {
+  //MAP
+  var initialLat = $(latval).val();
+  var initialLong = $(longval).val();
+  if (initialLat == '') {
+      initialLat = "0";
+      initialLong = "0";
+  };
+  var latlng = new google.maps.LatLng(initialLat, initialLong);
+  var options = {
+      zoom: 16,
+      center: latlng,
+      mapTypeId: google.maps.MapTypeId.ROADMAP,
+      disableDefaultUI: true
+  };
+
+  map = new google.maps.Map(document.getElementById("map"), options);
+
+  geocoder = new google.maps.Geocoder();
+
+  marker = new google.maps.Marker({
+      map: map,
+      draggable: true,
+      position: latlng
   });
 
-  //add dragend event to markers, triggered when you drop them
-  _.each(json_data, function(json){
-    google.maps.event.addListener(json.marker.getServiceObject(), "dragend", function(event) {
-      var lat = event.latLng.lat();
-      var lng = event.latLng.lng();
-      console.log('Marker with id: ' + json.id + ' dropped hat lat: ' + lat + ' and lng: ' + lng)
-    });
+  google.maps.event.addListener(marker, "dragend", function (event) {
+      var point = marker.getPosition();
+      map.panTo(point);
   });
+};
+
+$(document).ready(function () {
+  initialize();
+  $('#address-search').click(function (e) {
+  var address = $(address_search).val();
+  geocoder.geocode({ 'address': address }, function (results, status) {
+      if (status == google.maps.GeocoderStatus.OK) {
+          map.setCenter(results[0].geometry.location);
+          marker.setPosition(results[0].geometry.location);
+          $(latval).val(marker.getPosition().lat());
+          $(longval).val(marker.getPosition().lng());
+      } else {
+          alert("Geocode was not successful for the following reason: " + status);
+      }
+  });
+  e.preventDefault();
+});
+
+  //Add listener to marker for reverse geocoding
+  google.maps.event.addListener(marker, 'drag', function () {
+      geocoder.geocode({ 'latLng': marker.getPosition() }, function (results, status) {
+          if (status == google.maps.GeocoderStatus.OK) {
+              if (results[0]) {
+                  $(latval).val(marker.getPosition().lat());
+                  $(longval).val(marker.getPosition().lng());
+              }
+          }
+      });
+  });
+
 });
 </script>

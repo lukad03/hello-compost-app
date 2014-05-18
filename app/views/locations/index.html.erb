@@ -1,4 +1,9 @@
 <h1>Locations</h1>
 <% @locations.each do |location| %>
-  <%= location.name %>
+<div class="location">
+  <p><%= location.name %></p>
+  <p><%= location.address %></p>
+  <p><%= location.latitude %></p>
+  <p><%= location.longitude %></p>
+</div>
 <% end %>
