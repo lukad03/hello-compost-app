@@ -31,12 +31,14 @@ function initialize() {
   var initialLat = $(latval).val();
   var initialLong = $(longval).val();
   if (initialLat == '') {
-      initialLat = "0";
-      initialLong = "0";
+      initialLat = "40.6893609";
+      initialLong = "-74.0444866";
   };
   var latlng = new google.maps.LatLng(initialLat, initialLong);
   var options = {
       zoom: 16,
+      minZoom: 16,
+      maxZoom: 18,
       center: latlng,
       mapTypeId: google.maps.MapTypeId.ROADMAP,
       disableDefaultUI: true
