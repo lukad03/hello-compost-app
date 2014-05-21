@@ -11,7 +11,7 @@ class ScrapsController < ApplicationController
   end
 
   def create
-    @scrap = Scrap.create(scrap_params)
+    @scrap = scrap_params[:scrap]
     @credit = ScrapToCredit.convert(@scrap)
     if @credit == true
       redirect_to scraps_path
