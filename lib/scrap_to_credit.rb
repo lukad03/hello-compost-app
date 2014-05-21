@@ -5,8 +5,12 @@ class ScrapToCredit
     @scrap = scrap
   end
 
-  def self.create(scrap)
-    Credit.create(value: scrap.weight.round, user_id: scrap.user_id)
+  def self.convert(scrap)
+    @credit = Credit.create(value: scrap.weight.round, user_id: scrap.user_id)
+    if @credit.save
+      scrap.save
+      return true
+    end
   end
 
 end

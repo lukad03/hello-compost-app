@@ -12,17 +12,11 @@ class ScrapsController < ApplicationController
 
   def create
     @scrap = Scrap.create(scrap_params)
-    if @scrap.valid?
-      @credit = ScrapToCredit.create(@scrap)
-      if @credit.save
-        @scrap.save
-        redirect_to scraps_path
-      else
-        flash[:error] = 'The scrap failed to become a credit'
-        redirect_to new_scrap_path
-      end
+    @credit = ScrapToCredit.convert(@scrap)
+    if @credit == true
+      redirect_to scraps_path
     else
-      flash[:error] = 'The scrap failed to save'
+      flash[:error] = 'The scrap failed to become a credit'
       redirect_to new_scrap_path
     end
   end
