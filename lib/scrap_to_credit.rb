@@ -6,14 +6,12 @@ class ScrapToCredit
   end
 
 
-  def self.convert(scrap)
-    if scrap.valid?
-      @credit = Credit.create(value: scrap.weight.round, user_id: scrap.user_id)
-      if @credit.save
-        @scrap = Scrap.create(scrap)
-        if @scrap.save
-          return true
-        end
+  def self.convert(scrap_params)
+    @credit = Credit.create(value: scrap_params[:weight].to_f.round, user_id: scrap_params[:user_id].to_i)
+    if @credit.save
+      @scrap = Scrap.create(scrap_params)
+      if @scrap.save
+        return true
       end
     end
   end

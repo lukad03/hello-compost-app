@@ -11,9 +11,8 @@ class ScrapsController < ApplicationController
   end
 
   def create
-    @scrap = scrap_params[:scrap]
-    @credit = ScrapToCredit.convert(@scrap)
-    if @credit == true
+    @convert = ScrapToCredit.convert(scrap_params)
+    if @convert == true
       redirect_to scraps_path
     else
       flash[:error] = 'The scrap failed to become a credit'
@@ -26,4 +25,5 @@ class ScrapsController < ApplicationController
   def scrap_params
     params.require(:scrap).permit(:weight, :user_id)
   end
+
 end
