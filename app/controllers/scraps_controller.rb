@@ -15,7 +15,7 @@ class ScrapsController < ApplicationController
     if @convert == true
       redirect_to scraps_path
     else
-      flash[:error] = 'The scrap failed to become a credit'
+      flash[:error] = 'The scrap failed to save.'
       redirect_to new_scrap_path
     end
   end
