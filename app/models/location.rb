@@ -1,6 +1,6 @@
 class Location < ActiveRecord::Base
   belongs_to :organization
-  has_many :users
+  has_many :facilitator_locations
 
   validates :name, presence: true, uniqueness: true
   validates :address, presence: true, uniqueness: true

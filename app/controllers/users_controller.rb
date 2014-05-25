@@ -1,7 +1,4 @@
 class UsersController < Devise::SessionsController
-  def create
-    super
-  end
 
   def show
     @user = User.where(username: params[:username]).first

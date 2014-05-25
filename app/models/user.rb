@@ -5,12 +5,9 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
    has_many :scraps
    has_many :credits
-   belongs_to :location
+   belongs_to :organization
+   belongs_to :rolable, :polymorphic => true
 
-  validates_presence_of :username
-  validates_uniqueness_of :username
+  accepts_nested_attributes_for :organization
 
-  def to_param
-    username
-  end
 end

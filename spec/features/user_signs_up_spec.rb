@@ -2,7 +2,7 @@ require 'spec_helper'
 
 feature 'Registration' do
 
-  scenario 'User views sign up page and creates an account' do
+  pending 'User views sign up page and creates an account' do
     location = FactoryGirl.create( :location, name: 'Amboy' )
 
     visit root_path

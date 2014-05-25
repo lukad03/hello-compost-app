@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  devise_for :users
+  devise_for :users, :controllers => { :registrations => 'user_registrations' }
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
@@ -11,7 +11,8 @@ Rails.application.routes.draw do
   resources :locations
 
   devise_scope :user do
-    get '/users/:username' => 'users#show', as: 'user_profile'
+    get 'admin/sign_up' => 'user_registrations#new', :user => { :user_type => 'admin' }, as: 'admin_sign_up'
+    #get '/users/:username' => 'users#show', as: 'user_profile'
   end
 
   # Example of regular route:

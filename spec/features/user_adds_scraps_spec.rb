@@ -2,7 +2,7 @@ require "spec_helper"
 
 feature 'Scrap creation' do
 
-  scenario 'User logs in and adds scraps' do
+  pending 'User logs in and adds scraps' do
     farmer = FactoryGirl.create( :user, username: 'lukad03' )
     participant = FactoryGirl.create( :user, username: 'resident' )
     login_as(farmer, scope: :user)
