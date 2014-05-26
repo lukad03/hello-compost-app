@@ -7,8 +7,9 @@ Rails.application.routes.draw do
   root 'welcome#index'
 
   resources :scraps
-  resources :organizations
-  resources :locations
+  resources :organizations do
+    resources :locations
+  end
   resources :admins
 
   devise_scope :user do
