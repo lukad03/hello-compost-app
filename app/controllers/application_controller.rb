@@ -11,8 +11,12 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.for(:sign_up) << :username
   end
 
+  def current_user_role
+    current_user.rolable_type
+  end
+
   def current_organization
-    current_user.organization
+    current_user_role.organization
   end
 
   def after_sign_in_path_for(resource)

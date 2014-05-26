@@ -12,6 +12,7 @@ class AdminsController < ApplicationController
       sign_in_and_redirect @admin.user
     else
       flash[:error] = 'Your account failed to create'
+      render :new
     end
   end
 
@@ -20,9 +21,9 @@ class AdminsController < ApplicationController
   def admin_params
     params.require(:admin).permit(
       :name,
-      :organization_id,
-      user_attributes: [:email, :id, :password],
-      organization_attributes: [:id, :name]
+      organization_attributes: [:id, :name],
+      user_attributes: [:email, :id, :password, :organization_id]
     )
   end
+
 end

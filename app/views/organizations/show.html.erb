@@ -1,3 +1,8 @@
 <header>
 <h1><%= @organization.name %></h1>
 </header>
+
+<% @locations.each do |location| %>
+  <%= location.name %>
+  <%= link_to location.name, organization_location %>
+<% end %>
