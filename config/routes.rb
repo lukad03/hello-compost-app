@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  devise_for :users, :controllers => { :registrations => 'user_registrations' }
+  devise_for :users
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   resources :scraps
   resources :organizations
   resources :locations
+  resources :admins
 
   devise_scope :user do
     get 'admin/sign_up' => 'user_registrations#new', :user => { :user_type => 'admin' }, as: 'admin_sign_up'

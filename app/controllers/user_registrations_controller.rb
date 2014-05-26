@@ -60,4 +60,11 @@ class UserRegistrationsController < Devise::RegistrationsController
     params.require(:organization).permit(:name)
   end
 
+  def after_sign_in_path_for(resource)
+    case current_user.rolable_type
+    when "Admin"
+      return organizations_path
+    end
+  end
+
 end
