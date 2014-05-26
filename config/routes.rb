@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   resources :organizations do
     resources :locations
   end
+
   resources :admins
 
   devise_scope :user do
