@@ -7,11 +7,9 @@ class AdminsController < ApplicationController
   end
 
   def create
-    @user = User.new(params[:user])
     @admin = Admin.create(admin_params)
-    @user.rolable = @admin
     if @admin.save
-      sign_in_and_redirect @user
+      sign_in_and_redirect @admin.user
     else
       flash[:error] = 'Your account failed to create'
     end
