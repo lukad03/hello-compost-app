@@ -12,7 +12,6 @@ class AdminsController < ApplicationController
       sign_in_and_redirect @admin.user
     else
       flash[:error] = 'Your account failed to create'
-      render :new
     end
   end
 

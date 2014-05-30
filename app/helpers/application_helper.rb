@@ -26,4 +26,9 @@ module ApplicationHelper
 
     html.html_safe
   end
+
+  def current_organization
+    current_user.rolable.organization.name
+  end
+
 end
