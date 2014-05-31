@@ -5,11 +5,11 @@ Rails.application.routes.draw do
 
 
   resources :scraps
-  resources :organizations do
-    resources :locations
-  end
-
+  resources :organizations
   resources :admins
+
+  get '/locations/:name' => 'locations#show', as: 'user_profile'
+  resources :locations
 
   root :to => 'welcome#index'
 
