@@ -6,7 +6,8 @@ Rails.application.routes.draw do
     resources :scraps
   end
   resources :admins
-  resources :organizations
+  get '/organizations/new', to: 'admins#new'
+  resources :organizations, only: [:index, :show]
 
   root :to => 'welcome#index'
 
