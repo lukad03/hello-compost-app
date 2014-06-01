@@ -1,0 +1,16 @@
+<header>
+<h1>Sign Up</h1>
+</header>
+
+<%= simple_form_for [@organization, @facilitator], url: '/organizations/:organization_name/facilitators' do |facilitator| %>
+
+  <%= facilitator.input :name %>
+
+  <%= facilitator.simple_fields_for :user, @user do |user| %>
+    <%= user.input :email, required: true %>
+    <%= user.input :password, required: true %>
+  <% end %>
+
+  <%= facilitator.button :submit, 'Sign Up' %>
+
+<% end %>
