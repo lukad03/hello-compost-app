@@ -11,8 +11,8 @@
     <%= location.input :address, label: 'Location Address', maxlength: 100 %>
     <a id="address-search"class="button address-search" href="#">Search</a>
   </div>
-  <%= location.input :latitude, :as => :hidden %>
-  <%= location.input :longitude, :as => :hidden %>
+  <%= location.input :latitude, as: :hidden, value: '40.6893609' %>
+  <%= location.input :longitude, as: :hidden, value: '-74.0444866' %>
 
   <%= location.button :submit, value: "Add Location" %>
 <% end %>
