@@ -29,6 +29,9 @@ GEM
       tzinfo (~> 1.1)
     arel (5.0.1.20140414130214)
     bcrypt (3.1.7)
+    bourbon (3.2.3)
+      sass (~> 3.2)
+      thor
     builder (3.2.2)
     cancan (1.6.10)
     capybara (2.1.0)
@@ -78,6 +81,9 @@ GEM
     mini_portile (0.5.3)
     minitest (5.3.3)
     multi_json (1.9.2)
+    neat (1.5.1)
+      bourbon (>= 3.1)
+      sass (~> 3.2.19)
     nokogiri (1.6.1)
       mini_portile (~> 0.5.0)
     orm_adapter (0.5.0)
@@ -164,6 +170,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  bourbon
   cancan
   capybara-webkit (>= 1.0.0)
   coffee-rails (~> 4.0.0)
@@ -172,6 +179,7 @@ DEPENDENCIES
   factory_girl_rails
   jbuilder (~> 2.0)
   jquery-rails
+  neat
   pg
   rails (= 4.1.0)
   rspec-rails (>= 2.14)

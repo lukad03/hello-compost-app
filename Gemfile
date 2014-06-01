@@ -1,20 +1,21 @@
 source 'https://rubygems.org'
 
-gem 'rails', '4.1.0'
-gem 'pg'
-gem 'sass-rails', '~> 4.0.3'
-gem 'uglifier', '>= 1.3.0'
+gem 'bourbon'
 gem 'cancan'
 gem 'coffee-rails', '~> 4.0.0'
 gem 'devise'
 gem 'jquery-rails'
-gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
+gem 'neat'
+gem 'pg'
+gem 'rails', '4.1.0'
+gem 'sass-rails', '~> 4.0.3'
 gem 'sdoc', '~> 0.4.0',          group: :doc
 gem 'select2-rails'
 gem 'simple_form'
 gem 'spring',        group: :development
-
+gem 'turbolinks'
+gem 'uglifier', '>= 1.3.0'
 
 group :development, :test do
   gem 'factory_girl_rails'
