@@ -5,7 +5,7 @@ class OrganizationsController < ApplicationController
   end
 
   def show
-    @organization = Organization.find(params[:id])
+    @organization = Organization.where(name: params[:name]).first
     @locations = @organization.locations
   end
 

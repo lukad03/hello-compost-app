@@ -2,14 +2,11 @@ Rails.application.routes.draw do
   devise_for :users, controllers: { registrations: 'user_registrations'}
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
-
-
-  resources :scraps
-  resources :organizations
+  resources :locations, param: :name do
+    resources :scraps
+  end
   resources :admins
-
-  get '/locations/:name' => 'locations#show', as: 'user_profile'
-  resources :locations
+  resources :organizations
 
   root :to => 'welcome#index'
 

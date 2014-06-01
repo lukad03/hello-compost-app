@@ -13,6 +13,7 @@ class Ability
         can :manage, User, :location_id => user.rolable.organization.locations
     elsif user.rolable_type == "Client"
         can :manage, User, id: user.id
+        can :read, Location
     end
   end
 end

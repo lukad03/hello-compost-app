@@ -3,6 +3,5 @@
 </header>
 
 <% @locations.each do |location| %>
-  <%= location.name %>
-  <%= link_to location.name, organization_location %>
+  <%= link_to location.name, organization_location_path(@organization, location) %>
 <% end %>
