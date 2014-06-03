@@ -11,9 +11,7 @@ Rails.application.routes.draw do
     resources :facilitators
   end
 
-  resources :locations, param: :name do
-    resources :scraps
-  end
+  resources :clients
 
   root :to => 'welcome#index'
 

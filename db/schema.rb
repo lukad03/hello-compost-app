@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140601204837) do
+ActiveRecord::Schema.define(version: 20140602015336) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -23,11 +23,20 @@ ActiveRecord::Schema.define(version: 20140601204837) do
     t.integer  "organization_id"
   end
 
+  create_table "clients", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "organization_id"
+    t.integer  "location_id"
+    t.string   "username"
+  end
+
   create_table "credits", force: true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "user_id"
     t.integer  "value"
+    t.integer  "client_id"
   end
 
   create_table "facilitator_locations", force: true do |t|
@@ -69,8 +78,8 @@ ActiveRecord::Schema.define(version: 20140601204837) do
   create_table "scraps", force: true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "user_id"
     t.decimal  "weight",     precision: 5, scale: 2
+    t.integer  "client_id"
   end
 
   create_table "users", force: true do |t|

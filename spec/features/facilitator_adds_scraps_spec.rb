@@ -2,21 +2,25 @@ require "spec_helper"
 
 feature 'Scrap creation' do
 
-  pending 'User logs in and adds scraps' do
-    facilitator = FactoryGirl.create( :user, username: 'lukad03' )
-    client = FactoryGirl.create( :user, username: 'resident' )
-    login_as(facilitator, scope: :user)
+  scenario 'Facilitator logs in and adds user scrap' do
+    organization = FactoryGirl.create(:organization, name: 'Cheeroio')
+    facilitator = FactoryGirl.create(:admin, organization_id: organization.id)
+    user = FactoryGirl.create(:user, rolable_type: 'Admin', rolable_id: facilitator.id)
+    client = FactoryGirl.create( :client, username: 'resident' )
+    location = FactoryGirl.create(:location)
 
-    visit new_scrap_path
+    login_as(user)
+
+    visit new_location_scrap_path(location)
     fill_in 'scrap_weight', with: '2.27'
-    select 'resident', from: 'scrap_user_id'
+    select 'resident', from: 'scrap_client_id'
 
     click_button 'Create Scrap'
 
     expect(page).to have_text('resident')
     expect(page).to have_text('2.27')
 
-    visit '/users/resident'
+    visit '/clients/resident'
     expect(page).to have_text('resident')
     expect(page).to have_text('2 Credits')
 
