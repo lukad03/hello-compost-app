@@ -6,9 +6,11 @@ class FacilitatorsController < ApplicationController
   end
 
   def create
-    @organization = Organization.where(name: params[:name]).first
-    @facilitator = Facilitator.create(facilitator_params)
+    @facilitator = new_facilitator
+    @facilitator.organization = organization
     if @facilitator.save
+      session["organization.name"] = organization.name
+      flash[:success] = 'Welcome!'
       sign_in_and_redirect @facilitator.user
     else
       flash[:error] = 'Your account failed to create'
@@ -17,10 +19,18 @@ class FacilitatorsController < ApplicationController
 
   private
 
+  def organization
+    Organization.find_by(name: params[:organization_name])
+  end
+
+  def new_facilitator
+    Facilitator.create(facilitator_params)
+  end
+
   def facilitator_params
     params.require(:facilitator).permit(
-      :name, :organization_id,
-      user_attributes: [:email, :id, :password, :organization_id]
+      :name, :organization_name,
+      user_attributes: [:email, :id, :password]
     )
   end
 

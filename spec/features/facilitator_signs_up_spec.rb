@@ -3,9 +3,9 @@ require 'spec_helper'
 feature 'Facilitator Registration' do
 
   scenario 'Facilitator visits registration page and creates an account' do
-    organization = FactoryGirl.create( :organization, name: 'Skyfall' )
+    organization = create( :organization)
 
-    visit new_organization_facilitator_path(organization)
+    visit new_organization_facilitator_path(organization.name)
 
     fill_in 'Name', with: 'James Bond'
     fill_in 'Email', with: 'user2@email.com'
@@ -13,7 +13,7 @@ feature 'Facilitator Registration' do
 
     click_button 'Sign Up'
 
-    expect(page).to have_text 'Welcome to Skyfall, James Bond'
+    expect(page).to have_text 'Welcome!'
 
   end
 

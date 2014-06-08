@@ -2,5 +2,10 @@
 
 FactoryGirl.define do
   factory :admin do
+    sequence(:name) { |n| "Name-#{n}" }
+
+    trait :with_organization do
+      organization
+    end
   end
 end

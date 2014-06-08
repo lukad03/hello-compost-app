@@ -1,0 +1,50 @@
+diff --git a/app/controllers/facilitators_controller.rb b/app/controllers/facilitators_controller.rb
+index 013d81e..91c08dc 100644
+--- a/app/controllers/facilitators_controller.rb
++++ b/app/controllers/facilitators_controller.rb
+@@ -6,8 +6,9 @@ class FacilitatorsController < ApplicationController
+   end
+ 
+   def create
+-    @organization = Organization.where(name: params[:name]).first
++    @organization = Organization.find_by(name: params[:organization_name])
+     @facilitator = Facilitator.create(facilitator_params)
++    @facilitator.organization = @organization
+     if @facilitator.save
+       sign_in_and_redirect @facilitator.user
+     else
+@@ -19,7 +20,7 @@ class FacilitatorsController < ApplicationController
+ 
+   def facilitator_params
+     params.require(:facilitator).permit(
+-      :name, :organization_id,
++      :name,:organization_name,
+       user_attributes: [:email, :id, :password, :organization_id]
+     )
+   end
+diff --git a/app/views/facilitators/new.html.erb b/app/views/facilitators/new.html.erb
+index 9ffc24b..f9b7c12 100644
+--- a/app/views/facilitators/new.html.erb
++++ b/app/views/facilitators/new.html.erb
+@@ -2,7 +2,7 @@
+ <h1>Sign Up</h1>
+ </header>
+ 
+-<%= simple_form_for [@organization, @facilitator], url: '/organizations/:organization_name/facilitators' do |facilitator| %>
++<%= simple_form_for [@organization, @facilitator], url: organization_facilitators_path(name: @organization) do |facilitator| %>
+ 
+   <%= facilitator.input :name %>
+ 
+diff --git a/spec/features/facilitator_signs_up_spec.rb b/spec/features/facilitator_signs_up_spec.rb
+index 7747cbe..756e3f3 100644
+--- a/spec/features/facilitator_signs_up_spec.rb
++++ b/spec/features/facilitator_signs_up_spec.rb
+@@ -5,7 +5,7 @@ feature 'Facilitator Registration' do
+   scenario 'Facilitator visits registration page and creates an account' do
+     organization = FactoryGirl.create( :organization, name: 'Skyfall' )
+ 
+-    visit new_organization_facilitator_path(organization)
++    visit new_organization_facilitator_path(organization.name)
+ 
+     fill_in 'Name', with: 'James Bond'
+     fill_in 'Email', with: 'user2@email.com'

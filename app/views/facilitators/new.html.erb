@@ -2,7 +2,7 @@
 <h1>Sign Up</h1>
 </header>
 
-<%= simple_form_for [@organization, @facilitator], url: '/organizations/:organization_name/facilitators' do |facilitator| %>
+<%= simple_form_for [@organization, @facilitator], url: organization_facilitators_path(name: @organization) do |facilitator| %>
 
   <%= facilitator.input :name %>
 

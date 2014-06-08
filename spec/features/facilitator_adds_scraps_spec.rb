@@ -2,7 +2,7 @@ require "spec_helper"
 
 feature 'Scrap creation' do
 
-  scenario 'Facilitator logs in and adds user scrap' do
+  pending 'Facilitator logs in and adds user scrap' do
     organization = FactoryGirl.create(:organization, name: 'Cheeroio')
     facilitator = FactoryGirl.create(:admin, organization_id: organization.id)
     user = FactoryGirl.create(:user, rolable_type: 'Admin', rolable_id: facilitator.id)

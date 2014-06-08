@@ -21,12 +21,14 @@ gem 'uglifier', '>= 1.3.0'
 
 group :development, :test do
   gem 'factory_girl_rails'
+  gem 'pry-rails'
   gem 'rspec-rails', '>= 2.14'
 end
 
 group :test do
   gem 'database_cleaner'
   gem 'capybara-webkit', '>= 1.0.0'
+  gem 'launchy'
   gem 'shoulda-matchers'
 end
 
