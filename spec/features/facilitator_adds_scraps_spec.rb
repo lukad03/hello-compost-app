@@ -3,9 +3,9 @@ require "spec_helper"
 feature 'Scrap creation' do
 
   pending 'User logs in and adds scraps' do
-    farmer = FactoryGirl.create( :user, username: 'lukad03' )
-    participant = FactoryGirl.create( :user, username: 'resident' )
-    login_as(farmer, scope: :user)
+    facilitator = FactoryGirl.create( :user, username: 'lukad03' )
+    client = FactoryGirl.create( :user, username: 'resident' )
+    login_as(facilitator, scope: :user)
 
     visit new_scrap_path
     fill_in 'scrap_weight', with: '2.27'
