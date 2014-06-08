@@ -1,5 +1,6 @@
 class Location < ActiveRecord::Base
   belongs_to :organization
+  has_many :clients
   has_many :facilitator_locations
   has_many :facilitators, through: :facilitator_locations
 
