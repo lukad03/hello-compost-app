@@ -1,6 +1,12 @@
 class Invite < ActiveRecord::Base
   belongs_to :organization
 
+  has_many :invite_locations
+  has_many :locations, through: :invite_locations
+
+  validates :email, presence: true, uniqueness: true
+  validates :organization, presence: true
+
   def invited?
     !!self.invited_at
   end

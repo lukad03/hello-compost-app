@@ -6,5 +6,6 @@ FactoryGirl.define do
     sequence(:address) { |n| "{n} Main Street" }
     sequence(:latitude) { |n| "{n}"}
     sequence(:longitude) { |n| "{n}" }
+    organization
   end
 end

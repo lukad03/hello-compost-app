@@ -14,6 +14,8 @@ feature 'Invite Creation' do
     fill_in 'Email', with: 'user@user.com'
     check 'Location'
 
+    click_button 'Send Invite'
+
 
   end
 

@@ -1,0 +1,14 @@
+<header>
+  <h1>Send an Invite</h1>
+</header>
+
+<%= simple_form_for [@organization, @invite] do |invite| %>
+
+  <%= invite.input :email %>
+
+  <%= invite.association :locations, collection: locations, as: :check_boxes,
+  label_method: :name, value_method: :id %>
+
+  <%= invite.button :submit, 'Send Invite' %>
+
+<% end %>
