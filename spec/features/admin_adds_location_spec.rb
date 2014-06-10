@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 feature 'Location creation' do
-  scenario 'An admin creates a location and is shown the location' do
+  pending 'An admin creates a location and is shown the location' do
     organization = create(:organization)
     admin = create(:admin, organization_id: organization.id)
     user = create(:user, rolable_type: 'Admin', rolable_id: admin.id)
