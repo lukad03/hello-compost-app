@@ -1,11 +1,11 @@
 class InvitesController < ApplicationController
   def new
     @organization = organization
-    @invite = new_invite(organization_id: current_organization.id)
+    @invite = Invite.new
   end
 
   def create
-    @invite = Invite.new(invite_params)
+    @invite = InviteBuilder.new(invite_params)
     if @invite.save
       flash[:success] = 'Invitation sent!'
       redirect_to organization_path(current_organization.name)

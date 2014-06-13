@@ -16,6 +16,8 @@ feature 'Invite Creation' do
 
     click_button 'Send Invite'
 
+    expect(page).to have_text 'Invitation sent!'
+
 
   end
 
