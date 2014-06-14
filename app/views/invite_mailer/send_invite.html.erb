@@ -1,0 +1,8 @@
+<h3>Hello,</h3>
+<p>
+  Someone from <%= @organization.name %> has invited you to join Hello Compost. Please click the link below to join.
+</p>
+
+<p>
+  <%= link_to 'Join', new_organization_facilitator(@organizaiton.name) %>
+</p>

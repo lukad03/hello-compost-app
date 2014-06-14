@@ -6,7 +6,7 @@ class InvitesController < ApplicationController
 
   def create
     @invite = InviteBuilder.new(invite_params)
-    if @invite.save
+    if @invite
       flash[:success] = 'Invitation sent!'
       redirect_to organization_path(current_organization.name)
     else
