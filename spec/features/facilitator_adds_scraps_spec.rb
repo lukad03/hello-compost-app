@@ -4,7 +4,7 @@ feature 'Scrap creation' do
 
   scenario 'Facilitator logs in and adds client scrap' do
     organization = FactoryGirl.create(:organization, name: 'Cheeroio')
-    facilitator = FactoryGirl.create(:admin, organization_id: organization.id)
+    facilitator = FactoryGirl.create(:admin, organization: organization)
     user = FactoryGirl.create(:user, rolable_type: 'Admin', rolable_id: facilitator.id)
     client = FactoryGirl.create( :client, username: 'resident' )
     location = FactoryGirl.create(:location)

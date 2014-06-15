@@ -1,16 +1,17 @@
 class ClientsController < ApplicationController
   def new
-    @client = Client.new
+    @location = Location.find_by_name(params[:location_name])
+    @client = @location.clients.new
   end
 
   def create
     @client = Client.new(client_params)
     if @client.save
-      flash[:success] = "You're officially a composter!"
-      redirect_to client_path(@client)
+      flash[:success] = "Client Added"
+      redirect_to new_location_client_path(location)
     else
       flash[:error] = "Something went wrong. Please try again."
-      render :new
+      redirect_to new_location_client_path(location)
     end
   end
 
@@ -31,12 +32,11 @@ class ClientsController < ApplicationController
   helper_method :client_credits
 
   def location
-    @_location ||= Location.where(name: params[:name]).first
+    Location.find_by_name(params[:location_name])
   end
 
   def client_params
-    params[:client].require(:username).
-    merge(organization_id: current_user.rolable.organization,
-          location_id: location.id)
+    params.require(:client).permit(:username).
+    merge(organization_id: current_user.rolable.organization)
   end
 end
