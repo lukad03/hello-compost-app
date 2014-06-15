@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
   resources :locations, param: :name do
     resources :scraps
+    resources :clients, only: [:new, :create]
   end
   resources :admins
   get '/organizations/new', to: 'admins#new'
@@ -11,7 +12,7 @@ Rails.application.routes.draw do
     resources :facilitators
   end
 
-  resources :clients
+  resources :clients, only: [:show, :update, :destroy]
 
   root :to => 'welcome#index'
 

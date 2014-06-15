@@ -15,7 +15,7 @@ class ScrapsController < ApplicationController
     @convert = ScrapToCredit.convert(scrap_params)
     if @convert == true
       flash[:success] = 'Woohoo! It saved!'
-      redirect_to new_location_scrap_path
+      redirect_to client_path(client)
     else
       flash[:error] = 'The scrap failed to save.'
       redirect_to new_location_scrap_path
@@ -23,6 +23,10 @@ class ScrapsController < ApplicationController
   end
 
   private
+
+  def client
+    Client.find(scrap_params[:client_id])
+  end
 
   def scrap_params
     params.require(:scrap).permit(:weight, :client_id)
