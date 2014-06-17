@@ -1,6 +1,6 @@
 class ClientsController < ApplicationController
   def new
-    @location = Location.find_by_name(params[:location_name])
+    @location = location
     @client = @location.clients.new
   end
 
