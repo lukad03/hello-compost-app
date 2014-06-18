@@ -2,7 +2,7 @@ require 'spec_helper'
 
 feature 'Facilitator Registration' do
 
-  scenario 'Facilitator visits registration page and creates an account' do
+  pending 'Facilitator visits registration page and creates an account' do
     organization = FactoryGirl.create( :organization, name: 'Skyfall' )
 
     visit new_organization_facilitator_path(organization)

@@ -20,6 +20,7 @@ gem 'spring',        group: :development
 gem 'uglifier', '>= 1.3.0'
 
 group :development, :test do
+  gem 'pry-rails'
   gem 'factory_girl_rails'
   gem 'rspec-rails', '>= 2.14'
 end

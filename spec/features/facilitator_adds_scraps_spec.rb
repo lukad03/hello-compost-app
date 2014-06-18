@@ -2,9 +2,9 @@ require "spec_helper"
 
 feature 'Scrap creation' do
 
-  scenario 'Facilitator logs in and adds user scrap' do
+  scenario 'Facilitator logs in and adds client scrap' do
     organization = FactoryGirl.create(:organization, name: 'Cheeroio')
-    facilitator = FactoryGirl.create(:admin, organization_id: organization.id)
+    facilitator = FactoryGirl.create(:admin, organization: organization)
     user = FactoryGirl.create(:user, rolable_type: 'Admin', rolable_id: facilitator.id)
     client = FactoryGirl.create( :client, username: 'resident' )
     location = FactoryGirl.create(:location)
@@ -20,7 +20,7 @@ feature 'Scrap creation' do
     expect(page).to have_text('resident')
     expect(page).to have_text('2.27')
 
-    visit '/clients/resident'
+    visit client_path(client)
     expect(page).to have_text('resident')
     expect(page).to have_text('2 Credits')
 
