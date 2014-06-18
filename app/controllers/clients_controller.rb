@@ -8,10 +8,10 @@ class ClientsController < ApplicationController
     @client = Client.new(client_params)
     if @client.save
       flash[:success] = "Client Added"
-      redirect_to new_location_client_path(location)
+      redirect_to location_path(location.name)
     else
       flash[:error] = "Something went wrong. Please try again."
-      redirect_to new_location_client_path(location)
+      redirect_to location_client_new_path(location.name)
     end
   end
 
@@ -37,7 +37,6 @@ class ClientsController < ApplicationController
 
   def client_params
     params.require(:client).permit(:username, :location_name).
-    merge(organization_id: current_user.rolable.organization,
-          location_id: location.id)
+    merge(organization_id: current_user.rolable.organization)
   end
 end

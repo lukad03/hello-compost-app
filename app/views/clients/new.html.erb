@@ -1,6 +1,6 @@
 <h1>Add a Client</h1>
 
-<%= simple_form_for [@location, @client] do |client| %>
+<%= simple_form_for [@location, @client], url: location_clients_path(@location.name) do |client| %>
   <%= client.input :username, required: true %>
   <%= client.submit 'Add Client' %>
 <% end %>
