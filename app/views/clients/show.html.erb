@@ -1,7 +1,8 @@
 <h1><%= @client.username %></h1>
 
 <h2>Credits</h2>
-  <p><%= client_credits %> Credits</p>
+<p><%= client_credits %> Credits</p>
+<p><%= link_to 'Redeem Credits', redeem_credits_path(@client) %></p>
 
 <h2>Scraps</h2>
 <ul>
