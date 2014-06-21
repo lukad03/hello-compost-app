@@ -2,5 +2,6 @@
 
 FactoryGirl.define do
   factory :credit do
+    client
   end
 end

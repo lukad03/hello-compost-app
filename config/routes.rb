@@ -16,7 +16,11 @@ Rails.application.routes.draw do
     resources :invites
   end
 
-  resources :clients, only: [:show, :update, :destroy]
+  resources :clients, only: [:show, :update, :destroy] do
+    resources :debits, only: [:create, :destroy]
+  end
+
+  get '/clients/:id/credits/redeem', to: 'debits#new', as: 'redeem_credits'
 
   get '/dashboard/admin' => 'dashboard#admin', as: 'admin_dashboard'
   get '/dashboard/facilitator' => 'dashboard#facilitator', as: 'facilitator_dashboard'

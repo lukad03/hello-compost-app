@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140608230928) do
+ActiveRecord::Schema.define(version: 20140621020108) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -38,6 +38,15 @@ ActiveRecord::Schema.define(version: 20140608230928) do
     t.integer  "value"
     t.integer  "client_id"
   end
+
+  create_table "debits", force: true do |t|
+    t.integer  "client_id",  null: false
+    t.integer  "value",      null: false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "debits", ["client_id"], name: "index_debits_on_client_id", using: :btree
 
   create_table "facilitator_locations", force: true do |t|
     t.datetime "created_at"
