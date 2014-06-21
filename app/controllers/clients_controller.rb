@@ -37,6 +37,7 @@ class ClientsController < ApplicationController
 
   def client_params
     params.require(:client).permit(:username, :location_name).
-    merge(organization_id: current_user.rolable.organization)
+    merge(organization_id: current_user.rolable.organization,
+          location_id: location.id)
   end
 end
