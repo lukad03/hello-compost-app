@@ -1,0 +1,12 @@
+<section class="address">
+</section>
+
+<section class="hours">
+</section>
+
+<section class="facilitators">
+  <h3>Facilitators</h3>
+  <% @location.facilitators.each do |facilitator| %>
+    <p><%= facilitator.name %></p>
+  <% end %>
+</section>

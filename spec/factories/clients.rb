@@ -2,5 +2,13 @@
 
 FactoryGirl.define do
   factory :client do
+    trait :with_scraps do
+      after :create do |client|
+        create_list(
+          :scrap, 1,
+          client_id: client
+        )
+      end
+    end
   end
 end

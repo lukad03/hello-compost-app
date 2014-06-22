@@ -10,4 +10,8 @@ class User < ActiveRecord::Base
 
   accepts_nested_attributes_for :organization
 
+  def has_role?(*role_names)
+    self.rolable(name: role_names).present?
+  end
+
 end

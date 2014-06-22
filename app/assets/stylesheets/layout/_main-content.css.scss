@@ -1,0 +1,12 @@
+.main-content{
+
+  a.primary-button{
+    @include button($brand-green);
+    padding: .60em 2em;
+  }
+}
+
+.signed-in{
+  margin-left: 250px;
+}
+

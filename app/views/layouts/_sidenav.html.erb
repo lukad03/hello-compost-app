@@ -1,0 +1,47 @@
+<nav class="side-nav">
+  <div class="logo">
+    <a href="http://hellocompost.com"><img src="http://hellocompost.com/wp-content/themes/hello/images/hello-compost-light.svg"></a>
+  </div>
+  <ul class="nav-user">
+    <li><%= link_to current_user.rolable.name, edit_user_registration_path %></li>
+    <li><%= current_organization %></li>
+  </ul>
+  <ul class="nav-actions">
+    <li><span class="nav-title"><%= link_to 'Dashboard', admin_dashboard_path %></span></li>
+    <li>
+      <span class="nav-title">Locations</span>
+      <ul>
+      <% if locations.any? %>
+          <% locations.each do |location| %>
+            <li><%= link_to location.name, location_path(location.name) %></li>
+          <% end %>
+      <% end %>
+      </ul>
+    </li>
+
+    <li>
+      <span class="nav-title">Facilitators</span>
+        <ul>
+        <% if facilitators.any? %>
+          <% facilitators.each do |facilitator| %>
+            <li>facilitator.name</li>
+          <% end %>
+        <% else %>
+            <li><%= link_to 'Add Facilitators', new_organization_invite_path(current_organization) %></li>
+        <% end %>
+        </ul>
+    </li>
+
+    <li>
+      <span class="nav-title">Clients</span>
+      <ul>
+          <li><%= link_to 'Manage Clients', organization_clients_path(current_organization) %></li>
+        </ul>
+    </li>
+
+  </ul>
+  <ul>
+    <li><%= link_to current_user.email, edit_user_registration_path %></li>
+    <li><%= link_to "Log Out", destroy_user_session_path, method: :delete %></li>
+  </ul>
+</nav>

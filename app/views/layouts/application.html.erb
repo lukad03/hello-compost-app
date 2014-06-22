@@ -11,26 +11,26 @@
   <%= csrf_meta_tags %>
   <%= respond_include_tags %>
 </head>
-<body>
+<body class="<%= body_class %>">
 
-<nav class="top-bar">
-  <ul class="title-area">
-      <% if user_signed_in? %>
-        <li><%= current_organization %></li>
-        <li><%= link_to current_user.email, edit_user_registration_path %></li>
-        <li><%= link_to "Log Out", destroy_user_session_path, method: :delete %></li>
-      <% else %>
-        <li><%= link_to "Sign Up", organizations_new_path %></li>
-        <li><%= link_to "Log In", new_user_session_path %></li>
-      <% end %>
-  </ul>
-</nav>
-
-<% flash.each do |name, msg| %>
-  <%= content_tag :div, msg, id: "flash_#{name}" %>
+<% if user_signed_in? && current_user.has_role?('Admin', 'Facilitator') %>
+  <%= render 'layouts/sidenav' %>
+  <div class="main-content signed-in">
+<% else %>
+  <div class="main-content">
+    <nav class="top-bar">
+      <ul class="title-area">
+          <li><%= link_to "Sign Up", organizations_new_path %></li>
+          <li><%= link_to "Log In", new_user_session_path %></li>
+      </ul>
+    </nav>
 <% end %>
 
-<%= yield %>
+  <% flash.each do |name, msg| %>
+    <%= content_tag :div, msg, id: "flash_#{name}" %>
+  <% end %>
+
+  <%= yield %>
 
 </body>
 </html>

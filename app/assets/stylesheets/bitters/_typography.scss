@@ -4,10 +4,12 @@ body {
   font-size: $base-font-size;
   -webkit-font-smoothing: antialiased;
   line-height: $base-line-height;
+  margin: 0;
 }
 
 h1, h2, h3, h4, h5, h6 {
   font-family: $header-font-family;
+  font-weight: normal;
   line-height: 1.25em;
   margin: 0;
   text-rendering: optimizeLegibility; // Fix the character spacing for headings
@@ -18,19 +20,19 @@ h1 {
 }
 
 h2 {
-  font-size: $base-font-size * 2; // 16 * 2 = 32px
+  font-size: $base-font-size * 1.75; // 16 * 2 = 32px
 }
 
 h3 {
-  font-size: $base-font-size * 1.75; // 16 * 1.75 = 28px
+  font-size: $base-font-size * 1.5; // 16 * 1.75 = 28px
 }
 
 h4 {
-  font-size: $base-font-size * 1.5; // 16 * 1.5 = 24px
+  font-size: $base-font-size * 1.25; // 16 * 1.5 = 24px
 }
 
 h5 {
-  font-size: $base-font-size * 1.25; // 16 * 1.25 = 20px
+  font-size: $base-font-size * 1.15; // 16 * 1.25 = 20px
 }
 
 h6 {

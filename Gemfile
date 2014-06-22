@@ -5,6 +5,7 @@ gem 'bourbon'
 gem 'cancan'
 gem 'coffee-rails', '~> 4.0.0'
 gem 'devise'
+gem 'flutie'
 gem 'jquery-rails'
 gem 'jbuilder', '~> 2.0'
 gem 'neat'
@@ -27,8 +28,8 @@ group :development, :test do
 end
 
 group :test do
-  gem 'database_cleaner'
   gem 'capybara-webkit', '>= 1.0.0'
+  gem 'database_cleaner'
   gem 'launchy'
   gem 'shoulda-matchers'
 end

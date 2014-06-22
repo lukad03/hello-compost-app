@@ -1,1 +1,50 @@
+<div id="map"></div>
+
 <h1><%= @location.name %></h1>
+<h2><%= @location.organization.name %></h2>
+
+<% if user_signed_in? && current_user.has_role?('Admin', 'Facilitator') %>
+  <div class="add-scraps">
+    <%= link_to 'Add Scraps', new_location_scrap_path(@location.name), class: 'primary-button' %>
+  </div>
+<% end %>
+
+<%= render 'info' %>
+
+<script src="//maps.google.com/maps/api/js?v=3.13&sensor=false&libraries=geometry" type="text/javascript"></script>
+
+<script type="text/javascript">
+var map;
+var marker;
+
+
+function initialize() {
+  //MAP
+  var Long = '<%= @location.longitude %>';
+  var Lat = '<%= @location.latitude %>';
+  var latlng = new google.maps.LatLng(Long, Lat);
+  var options = {
+      zoom: 16,
+      scrollwheel: false,
+      navigationControl: false,
+      mapTypeControl: false,
+      scaleControl: false,
+      draggable: false,
+      center: latlng,
+      mapTypeId: google.maps.MapTypeId.ROADMAP,
+      disableDefaultUI: true
+  };
+
+  map = new google.maps.Map(document.getElementById("map"), options);
+
+  marker = new google.maps.Marker({
+      map: map,
+      draggable: false,
+      position: latlng
+  });
+};
+$(document).ready(function () {
+  initialize();
+});
+</script>
+

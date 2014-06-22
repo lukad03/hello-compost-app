@@ -9,11 +9,14 @@ Rails.application.routes.draw do
   resources :admins
   get '/organizations/new', to: 'admins#new'
   resources :organizations, only: [:index, :show], param: :name do
+    resources :clients, only: [:index]
     resources :facilitators
     resources :invites
   end
 
   resources :clients, only: [:show, :update, :destroy]
+
+  get '/dashboard/admin' => 'dashboard#admin', as: 'admin_dashboard'
 
   root :to => 'welcome#index'
 
