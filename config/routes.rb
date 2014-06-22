@@ -14,6 +14,9 @@ Rails.application.routes.draw do
 
   resources :clients, only: [:show, :update, :destroy]
 
+  get '/dashboard/admin' => 'dashboard#admin', as: 'admin_dashboard'
+  get '/dashboard/facilitator' => 'dashboard#facilitator', as: 'facilitator_dashboard'
+
   root :to => 'welcome#index'
 
   # Example of regular route:

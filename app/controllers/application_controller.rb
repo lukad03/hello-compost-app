@@ -14,9 +14,9 @@ class ApplicationController < ActionController::Base
   def after_sign_in_path_for(resource)
     case current_user.rolable_type
     when "Admin"
-      return organization_path(current_user.rolable.organization.name)
+      return admin_dashboard_path
     when "Facilitator"
-      return organization_path(current_user.rolable.organization.name)
+      return facilitator_dashboard_path
     when "Client"
       return user_path(current_user)
     end
