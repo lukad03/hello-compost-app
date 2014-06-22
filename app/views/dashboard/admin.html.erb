@@ -3,12 +3,25 @@
 <p>Member since <%= @admin.member_since %></p>
 </header>
 
-<section class="waste_collected">
-  <h1>Waste Collected</h1>
-  <p><%= @admin.weekly_scraps %></p>
-</section>
+<% if @admin.organization.clients.exists? %>
 
-<section class="visits">
-  <h1>Visits</h1>
-  <p><%= @admin.weekly_visits %></p>
-</section>
+  <section class="waste_collected">
+    <h1>Waste Collected</h1>
+    <p><%= @admin.weekly_scraps %></p>
+  </section>
+
+  <section class="visits">
+    <h1>Visits</h1>
+    <p><%= @admin.weekly_visits %></p>
+  </section>
+
+<% else %>
+
+  <section class="no-clients">
+    <p>
+      You haven't added any clients yet. Add clients to start populating your
+      dasboard
+    </p>
+  </section>
+
+<% end %>

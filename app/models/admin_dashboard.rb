@@ -6,7 +6,7 @@ class AdminDashboard
 
   def weekly_scraps
     binding.pry
-    clients.scraps.where(created_at: last_week).sum(:value)
+    Scrap.where(created_at: last_week, client_id: clients).sum(:value)
   end
 
   def weekly_visits
