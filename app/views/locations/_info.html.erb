@@ -1,12 +1,17 @@
-<section class="address">
-</section>
+<div class="location-info">
 
-<section class="hours">
-</section>
+  <section class="address">
+    <h3>Address</h3>
+    <p><%= @location.address %></p>
+  </section>
 
-<section class="facilitators">
-  <h3>Facilitators</h3>
-  <% @location.facilitators.each do |facilitator| %>
-    <p><%= facilitator.name %></p>
-  <% end %>
-</section>
+  <section class="hours">
+  </section>
+
+  <section class="facilitators">
+    <h3>Facilitators</h3>
+    <% @location.facilitators.each do |facilitator| %>
+      <p><%= facilitator.name %></p>
+    <% end %>
+  </section>
+</div>

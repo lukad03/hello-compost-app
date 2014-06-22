@@ -1,15 +1,18 @@
 <div id="map"></div>
 
-<h1><%= @location.name %></h1>
-<h2><%= @location.organization.name %></h2>
+<div class="location-content">
+  <h1><%= @location.name %></h1>
+  <h2><%= @location.organization.name %></h2>
 
-<% if user_signed_in? && current_user.has_role?('Admin', 'Facilitator') %>
-  <div class="add-scraps">
-    <%= link_to 'Add Scraps', new_location_scrap_path(@location.name), class: 'primary-button' %>
-  </div>
-<% end %>
+  <% if user_signed_in? && current_user.has_role?('Admin', 'Facilitator') %>
+    <div class="add-scraps">
+      <%= link_to 'Add Scraps', new_location_scrap_path(@location.name), class: 'primary-button' %>
+    </div>
+  <% end %>
 
-<%= render 'info' %>
+  <%= render 'info' %>
+
+</div>
 
 <script src="//maps.google.com/maps/api/js?v=3.13&sensor=false&libraries=geometry" type="text/javascript"></script>
 
