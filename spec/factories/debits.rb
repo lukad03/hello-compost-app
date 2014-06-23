@@ -2,5 +2,7 @@
 
 FactoryGirl.define do
   factory :debit do
+    client
+    value '10'
   end
 end
