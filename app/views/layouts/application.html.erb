@@ -13,6 +13,10 @@
 </head>
 <body>
 
+<% if user_signed_in? && current_user.has_role?('Admin', 'Facilitator') %>
+  <%= render 'layouts/sidenav' %>
+<% end %>
+
 <nav class="top-bar">
   <ul class="title-area">
       <% if user_signed_in? %>
