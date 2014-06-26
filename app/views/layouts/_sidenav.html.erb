@@ -1,3 +1,12 @@
 <nav class="side-nav">
-  <p>_sidenav.html.erb</p>
+  <ul>
+    <li>Locations</li>
+    <% if locations %>
+    <ul>
+      <% locations.each do |location| %>
+        <li><%= location.name %></li>
+      <% end %>
+    </ul>
+    <% end %>
+  </ul>
 </nav>

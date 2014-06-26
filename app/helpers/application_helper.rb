@@ -31,4 +31,8 @@ module ApplicationHelper
     current_user.rolable.organization.name
   end
 
+  def locations
+    current_user.rolable.organization.locations
+  end
+
 end
