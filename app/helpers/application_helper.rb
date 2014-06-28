@@ -35,4 +35,8 @@ module ApplicationHelper
     current_user.rolable.organization.locations
   end
 
+  def facilitators
+    current_user.rolable.organization.facilitators
+  end
+
 end

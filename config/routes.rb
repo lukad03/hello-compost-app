@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   resources :admins
   get '/organizations/new', to: 'admins#new'
   resources :organizations, only: [:index, :show], param: :name do
+    resources :clients, only: [:index]
     resources :facilitators
   end
 

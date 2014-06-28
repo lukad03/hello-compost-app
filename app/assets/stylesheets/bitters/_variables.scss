@@ -1,6 +1,8 @@
 // Typography
 ///////////////////////////////////////////////////////////////////////////////
-$sans-serif: $helvetica;
+$open-sans: "Open Sans", "Helvetica Neue", Helvetica, Roboto, Arial, sans-serif;
+
+$sans-serif: $open-sans;
 $serif: $georgia;
 
 $base-font-family: $sans-serif;
@@ -22,6 +24,8 @@ $light-gray: #DDD;
 $light-red: #FBE3E4;
 $light-yellow: #FFF6BF;
 $light-green: #E6EFC2;
+
+$blue-gray: #304656;
 
 // Body Color
 $base-body-color: white;
