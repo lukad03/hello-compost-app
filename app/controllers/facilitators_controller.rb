@@ -24,13 +24,22 @@ class FacilitatorsController < ApplicationController
   end
 
   def new_facilitator
-    Facilitator.create(facilitator_params)
+    Facilitator.new(facilitator_params)
+  end
+
+  def invite
+    Invite.find(email: facilitator_params[:email])
+  end
+
+  def invite_locations
+    InviteLocation.where(invite_id: invite)
   end
 
   def facilitator_params
     params.require(:facilitator).permit(
       :name, :organization_name,
-      user_attributes: [:email, :id, :password]
+      user_attributes: [:email, :id, :password].
+      merge(facilitator_locations: invite_locations)
     )
   end
 
