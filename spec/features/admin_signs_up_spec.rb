@@ -2,7 +2,7 @@ require "spec_helper"
 
 feature 'Admin registration' do
 
-  scenario 'Admin uses admin controller to sign up' do
+  scenario 'Admin visits admin sign up page and signs up' do
 
     visit new_admin_path
 

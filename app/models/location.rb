@@ -3,10 +3,10 @@ class Location < ActiveRecord::Base
   has_many :clients
   has_many :facilitator_locations
   has_many :facilitators, through: :facilitator_locations
+  has_many :invite_locations
+  has_many :invites, through: :invite_locations
 
-  validates :name, presence: true, uniqueness: true
-  validates :address, presence: true, uniqueness: true
-  validates :latitude, presence: true, uniqueness: true
-  validates :longitude, presence: true, uniqueness: true
+  validates :name, :address, presence: true, uniqueness: true
+  validates :latitude, :longitude, :organization, presence: true
 
 end

@@ -11,13 +11,14 @@ class Ability
         can :manage, User, :location_id => user.rolable.organization.locations
     elsif user.rolable_type == "Facilitator"
         can :manage, Credit
-        can :read, Location
         can :read, Organization
         can :manage, Scrap
         can :manage, User, :location_id => user.rolable.organization.locations
     elsif user.rolable_type == "Client"
         can :manage, User, id: user.id
+    else
         can :read, Location
+        can :create, Facilitator
     end
   end
 end
