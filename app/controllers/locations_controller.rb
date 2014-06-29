@@ -3,7 +3,7 @@ class LocationsController < ApplicationController
   load_and_authorize_resource skip_load_resource only: [:new, :create]
 
   def index
-    @locations = Location.all
+    @locations = Location.where(organization_id: organization)
   end
 
   def show
@@ -26,6 +26,10 @@ class LocationsController < ApplicationController
   end
 
   private
+
+  def organization
+    current_user.rolable.organization
+  end
 
   def location_params
     params.require(:location)

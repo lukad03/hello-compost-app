@@ -2,5 +2,7 @@
 
 FactoryGirl.define do
   factory :facilitator_location do
+    location
+    facilitator
   end
 end

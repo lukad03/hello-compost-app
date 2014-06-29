@@ -1,0 +1,34 @@
+<header>
+<h1><%= @facilitator.organization.name %></h1>
+<p>Member since <%= @facilitator.member_since %></p>
+</header>
+
+<% if @facilitator.organization.clients.exists? %>
+
+  <section class="locations">
+    <h1>My Locations</h1>
+    <% locations.each do |location| %>
+      <h2><%= location.name%></h2>
+    <% end %>
+  </section>
+
+  <section class="waste_collected">
+    <h1>Waste Collected</h1>
+    <p><%= @facilitator.weekly_scraps %></p>
+  </section>
+
+  <section class="visits">
+    <h1>Visits</h1>
+    <p><%= @facilitator.weekly_visits %></p>
+  </section>
+
+<% else %>
+
+  <section class="no-clients">
+    <p>
+      You haven't added any clients yet. Add clients to start populating your
+      dasboard
+    </p>
+  </section>
+
+<% end %>
