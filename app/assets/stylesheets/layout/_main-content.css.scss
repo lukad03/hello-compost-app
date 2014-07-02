@@ -1,8 +1,14 @@
 .main-content{
+  background: #eee;
+  height:100%;
 
   a.primary-button{
     @include button($brand-green);
-    padding: .60em 2em;
+    padding: .60em 1em;
+  }
+  a.secondary-button{
+    @include button($brand-teal);
+    padding: .60em 1em;
   }
 }
 

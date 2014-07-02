@@ -1,0 +1,11 @@
+<ul>
+  <% @clients.each do |client| %>
+  <li>
+    <h2><%= link_to client.username, client_path(client) %></h2>
+    <div class="actions">
+      <%= link_to 'Add Credits', root_path, class: 'primary-button' %>
+      <%= link_to 'Redeem Credits', root_path, class: 'secondary-button' %>
+    </div>
+  </li>
+  <% end %>
+</ul>

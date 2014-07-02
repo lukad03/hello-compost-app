@@ -1,4 +1,9 @@
 class ClientsController < ApplicationController
+  def index
+    @clients = current_organization.clients
+  end
+
+
   def new
     @location = location
     @client = @location.clients.new
