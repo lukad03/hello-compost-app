@@ -1,0 +1,12 @@
+<li>
+  <span class="nav-title">Facilitators <%= link_to "+", new_organization_invite_path(current_organization) %></span>
+    <ul>
+    <% if facilitators.any? %>
+      <% facilitators.each do |facilitator| %>
+        <li><%= link_to facilitator.name, organization_facilitator_path(current_organization, facilitator) %></li>
+      <% end %>
+    <% else %>
+        <li><%= link_to 'Add Facilitators', new_organization_invite_path(current_organization) %></li>
+    <% end %>
+    </ul>
+</li>

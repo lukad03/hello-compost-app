@@ -1,0 +1,20 @@
+<header>
+<h1>Update <%= @facilitator.name %></h1>
+</header>
+
+<%= simple_form_for [@organization, @facilitator] do |facilitator| %>
+
+  <% if current_user.has_role?('Admin') %>
+    <%= facilitator.association :locations, collection: locations, as: :check_boxes %>
+  <% else %>
+
+    <%= facilitator.input :name %>
+    <%= facilitator.simple_fields_for :user, @user do |user| %>
+      <%= user.input :email, required: true %>
+    <% end %>
+
+  <% end %>
+
+  <%= facilitator.button :submit, 'Update' %>
+
+<% end %>

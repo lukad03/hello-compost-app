@@ -26,6 +26,7 @@ RSpec.configure do |config|
 
   config.include Warden::Test::Helpers, type: :feature
   config.include Devise::TestHelpers, type: :controller
+  config.include AuthenticationHelper, type: :controller
 end
 
 Capybara.javascript_driver = :webkit

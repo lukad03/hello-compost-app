@@ -1,4 +1,11 @@
 class FacilitatorsController < ApplicationController
+  load_and_authorize_resource
+  skip_load_resource only: [:new, :create]
+
+  def show
+    @facilitator = Facilitator.find(params[:id])
+    @locations = @facilitator.locations
+  end
 
   def new
     @facilitator = Facilitator.new
@@ -15,6 +22,22 @@ class FacilitatorsController < ApplicationController
       sign_in_and_redirect @facilitator.user
     else
       flash[:error] = 'Your account failed to create'
+    end
+  end
+
+  def edit
+    @organization = Organization.find_by(params[:name])
+    @facilitator = Facilitator.find(params[:id])
+  end
+
+  def update
+    @facilitator = Facilitator.find(params[:id])
+    if @facilitator.update_attributes(facilitator_params)
+      flash[:success] = "Facilitator updated"
+      redirect_to organization_facilitator_path(current_organization.name, @facilitator)
+    else
+      flash[:error] = "Update failed"
+      redirect_to facilitator_path(current_organization, @facilitator)
     end
   end
 
@@ -44,8 +67,8 @@ class FacilitatorsController < ApplicationController
 
   def facilitator_params
     params.require(:facilitator).permit(
-      :name, :organization_name,
-      user_attributes: [:email, :id, :password]
+      :name, :organization_name, location_ids: [],
+      user_attributes: [:email, :id, :password, :password_confirmation]
     )
   end
 

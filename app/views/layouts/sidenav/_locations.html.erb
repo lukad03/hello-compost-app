@@ -1,0 +1,14 @@
+<li>
+  <span class="nav-title">Locations
+    <% if current_user.has_role?('Admin') %>
+      <%= link_to "+", new_location_path %>
+    <% end %>
+  </span>
+  <ul>
+  <% if locations.any? %>
+      <% locations.each do |location| %>
+        <li><%= link_to location.name, location_path(location.name) %></li>
+      <% end %>
+  <% end %>
+  </ul>
+</li>

@@ -8,29 +8,12 @@
   </ul>
   <ul class="nav-actions">
     <li><span class="nav-title"><%= link_to 'Dashboard', admin_dashboard_path %></span></li>
-    <li>
-      <span class="nav-title">Locations</span>
-      <ul>
-      <% if locations.any? %>
-          <% locations.each do |location| %>
-            <li><%= link_to location.name, location_path(location.name) %></li>
-          <% end %>
-      <% end %>
-      </ul>
-    </li>
 
-    <li>
-      <span class="nav-title">Facilitators</span>
-        <ul>
-        <% if facilitators.any? %>
-          <% facilitators.each do |facilitator| %>
-            <li>facilitator.name</li>
-          <% end %>
-        <% else %>
-            <li><%= link_to 'Add Facilitators', new_organization_invite_path(current_organization) %></li>
-        <% end %>
-        </ul>
-    </li>
+    <%= render 'layouts/sidenav/locations' %>
+
+    <% if current_user.has_role?('Admin') %>
+      <%= render 'layouts/sidenav/facilitators' %>
+    <% end %>
 
     <li>
       <span class="nav-title">Clients</span>

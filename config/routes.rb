@@ -6,7 +6,9 @@ Rails.application.routes.draw do
     resources :scraps
     resources :clients, only: [:new, :create]
   end
+
   resources :admins
+
   get '/organizations/new', to: 'admins#new'
   resources :organizations, only: [:index, :show], param: :name do
     resources :clients, only: [:index]
