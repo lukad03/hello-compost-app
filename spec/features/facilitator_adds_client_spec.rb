@@ -12,19 +12,24 @@ feature 'New Client' do
 
     expect(page).to have_text 'Client Added'
 
+    visit organization_clients_path(organization)
+    expect(page).to have_text 'new_client'
+
+  end
+
+  def organization
+    create( :organization, name: 'Cheeroio' )
   end
 
   def facilitator_setup
-    organization = FactoryGirl.create(:organization, name: 'Cheeroio')
-    facilitator = FactoryGirl.create(:admin, organization: organization)
-    user = FactoryGirl.create(:user, rolable_type: 'Admin', rolable_id: facilitator.id)
-    client = FactoryGirl.create( :client, username: 'resident' )
+    facilitator = create( :admin, organization: organization )
+    user = create( :user, rolable_type: 'Admin', rolable_id: facilitator.id )
 
     login_as(user)
   end
 
   def location
-    location = FactoryGirl.create(:location, name: 'Location Name')
+    create( :location, name: 'Location Name', organization: organization )
   end
 end
 

@@ -1,22 +1,22 @@
 require 'spec_helper'
 
 feature 'Redeem Credits' do
-  context 'when client has enough credits' do
+  context 'when a client has enough credits' do
     scenario 'Facilitator redeems credits for client' do
       facilitator_setup
-      client = FactoryGirl.create(:client, username: 'resident', organization: organization)
-      credit = FactoryGirl.create(:credit, value: '10', client_id: client.id)
+      client = create(:client, username: 'resident', organization: organization)
+      credit = create(:credit, value: '1000', client_id: client.id)
 
       visit client_path(client)
 
-      expect(page).to have_text '10 Credits'
+      expect(page).to have_text '1000 Credits'
       click_link 'Redeem Credits'
 
-      fill_in 'debit_value', with: '1'
+      fill_in 'debit_value', with: '900'
       click_button 'Redeem'
 
       expect(page).to have_text 'Credits Redeemed!'
-      expect(page).to have_text '0 Credits'
+      expect(page).to have_text '100 Credits'
     end
   end
 
@@ -25,8 +25,8 @@ feature 'Redeem Credits' do
   end
 
   def facilitator_setup
-    facilitator = FactoryGirl.create( :admin, organization: organization )
-    user = FactoryGirl.create( :user, rolable_type: 'Admin', rolable_id: facilitator.id )
+    facilitator = FactoryGirl.create( :facilitator, organization: organization )
+    user = FactoryGirl.create( :user, rolable_type: 'Facilitator', rolable_id: facilitator.id )
 
     login_as(user)
   end

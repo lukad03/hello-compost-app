@@ -56,11 +56,13 @@ ActiveRecord::Schema.define(version: 20140621020108) do
   end
 
   create_table "facilitators", force: true do |t|
+    t.string   "name",            null: false
+    t.integer  "organization_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "organization_id"
-    t.string   "name"
   end
+
+  add_index "facilitators", ["organization_id"], name: "index_facilitators_on_organization_id", using: :btree
 
   create_table "invite_locations", force: true do |t|
     t.integer  "location_id", null: false
