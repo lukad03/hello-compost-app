@@ -2,5 +2,8 @@
 
 FactoryGirl.define do
   factory :facilitator do
+
+    sequence(:name) { |n| "Name #{n}" }
+    user
   end
 end

@@ -15,13 +15,22 @@ class FacilitatorsController < ApplicationController
   def create
     @facilitator = new_facilitator
     @facilitator.organization = organization
-    if @facilitator.save
-      facilitator_locations(@facilitator.id)
-      session["organization.name"] = organization.name
-      flash[:success] = 'Welcome!'
-      sign_in_and_redirect @facilitator.user
+
+    @invite = Invite.find_redeemable(@facilitator.user.email)
+
+    if @invite
+      if @facilitator.save
+        @invite.redeemed!
+        facilitator_locations(@facilitator.id)
+        flash[:success] = 'Welcome!'
+        sign_in_and_redirect @facilitator.user
+      else
+        flash[:error] = "Your account failed to create"
+        redirect_to new_organization_facilitator_path(organization)
+      end
     else
-      flash[:error] = 'Your account failed to create'
+      flash[:error] = "You have'nt been invited by any organizations yet"
+      redirect_to root_path
     end
   end
 

@@ -2,11 +2,10 @@
 
 FactoryGirl.define do
   factory :invite do
-    sequence(:email) { |n| "user#{n}@email.com" }
+    sequence(:email) { |n| "invite#{n}@email.com" }
     organization
 
     trait :with_location do
     end
-
   end
 end

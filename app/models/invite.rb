@@ -17,12 +17,10 @@ class Invite < ActiveRecord::Base
   end
 
   def self.find_redeemable(email)
-    self.find(:first, :conditions => {:redeemed_at => nil, :email => email})
+    self.where(redeemed_at: nil, email: email).first
   end
 
   def redeemed!
-    self.redeemed_at = Time.now.utc
-    self.save!
+    self.update(redeemed_at: Time.now.utc)
   end
-
 end

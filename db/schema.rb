@@ -64,10 +64,11 @@ ActiveRecord::Schema.define(version: 20140608230928) do
   add_index "invite_locations", ["location_id"], name: "index_invite_locations_on_location_id", using: :btree
 
   create_table "invites", force: true do |t|
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string   "email",           null: false
-    t.integer  "organization_id", null: false
+    t.string  "email",           null: false
+    t.string  "string"
+    t.string  "invited_at"
+    t.string  "redeemed_at"
+    t.integer "organization_id", null: false
   end
 
   add_index "invites", ["organization_id"], name: "index_invites_on_organization_id", using: :btree
