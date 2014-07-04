@@ -5,7 +5,7 @@ class Debit < ActiveRecord::Base
   validate :enough_credits
 
   def enough_credits
-    if self.value and (available_credits(self.client_id) - self.value) < -1
+    if self.value and (available_credits(self.client_id) - self.value) <= 0
       self.errors.add(:value, "Not enough credits")
     end
   end

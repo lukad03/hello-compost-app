@@ -6,10 +6,10 @@ describe Debit do
 
   describe '#enough_credits' do
     it 'is invalid if there are not enough credits' do
-      debits = FactoryGirl.build(:debit)
+      debit = FactoryGirl.build(:debit)
 
-      debits.valid?
-      debits.errors[:value].should include 'Not enough credits'
+      debit.valid?
+      debit.errors[:value].should include 'Not enough credits'
     end
   end
 end
