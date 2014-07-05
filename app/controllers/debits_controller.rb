@@ -10,8 +10,8 @@ class DebitsController < ApplicationController
       flash[:success] = 'Credits Redeemed!'
       redirect_to client_path(debit_client)
     else
-      flash[:error] = 'Something went wrong. Please try again.'
-      render :new
+      flash[:error] = "You don't have enough credits."
+      redirect_to client_path(debit_client)
     end
   end
 

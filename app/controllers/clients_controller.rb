@@ -26,10 +26,18 @@ class ClientsController < ApplicationController
     @_client ||= Client.find(params[:id])
   end
 
-  def client_credits
+  def available_credits
+    existing_credits - existing_debits
+  end
+  helper_method :available_credits
+
+  def existing_credits
     Credit.where(client_id: client).sum(:value)
   end
-  helper_method :client_credits
+
+  def existing_debits
+    Debit.where(client_id: client).sum(:value)
+  end
 
   def location
     Location.find_by_name(params[:location_name])

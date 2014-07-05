@@ -4,7 +4,7 @@ FactoryGirl.define do
   factory :debit do
 
     after :build do |debit|
-      create(:credit, client: debit.client, value: '20')
+      create(:credit, client: debit.client, value: '11')
     end
 
     client
