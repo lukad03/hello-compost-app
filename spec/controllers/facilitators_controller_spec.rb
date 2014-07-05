@@ -3,36 +3,33 @@ require 'spec_helper'
 describe FacilitatorsController do
 
   describe '#create' do
-    it 'returns an error when an invite does not exist' do
+    context 'when an invite does not exist' do
+      it 'returns an error when an invite does not exist' do
+        email = "invited_facilitator@example.com"
+        organization = create(:organization, name: "Organization")
 
-      organization = create(:organization, name: "Organization")
+        facilitator = post :create, organization_name: organization.name,
+                      facilitator: facilitator_params(email)
 
-      expect{
-      post :create, organization_name: organization.name,
-                    facilitator: attributes_for(:facilitator, user_attributes: { email: "email@email.com"} )
-      }.to_not change(Facilitator,:count)
+        expect{ facilitator }.to_not change{ Facilitator.count }.by(1)
+      end
     end
 
-    it 'is successful when an invite does exist' do
-      organization = create(:organization, name: "Organization")
-      invite = create(:invite, email: "email@email.com")
+    context 'when an invite does exist' do
+      pending 'updates the redeemed_at attributes of the invite' do
+        email = "invited_facilitator@example.com"
+        invite = create(:invite, email: "invited_facilitator@example.com")
+        organization = create(:organization, name: "Organization")
 
-      facilitator = post :create, organization_name: organization.name,
-                    facilitator: attributes_for(:facilitator,
-                    user_attributes: { email: "email@email.com"} )
+        facilitator = post :create, organization_name: organization.name,
+                      facilitator: facilitator_params(email)
 
-
-      expect{facilitator}.to change { Facilitator.count }.by(1)
+        expect{ facilitator }.to change(invite.redeemed_at)
+      end
     end
 
-    it 'redeems invite when saved' do
-      organization = create(:organization, name: "Organization")
-      invite = create(:invite, email: "email@email.com")
-
-      expect{
-      post :create, organization_name: organization.name,
-                    facilitator: attributes_for(:facilitator, user_attributes: { email: "email@email.com"} )
-      }.to change(invite, :redeemed_at)
+    def facilitator_params(email)
+      { name: 'Name', user_attributes: { email: email, password: 'password' } }
     end
 
   end
