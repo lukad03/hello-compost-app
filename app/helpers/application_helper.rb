@@ -39,4 +39,8 @@ module ApplicationHelper
     current_user.rolable.organization.facilitators
   end
 
+  def invites
+    current_user.rolable.organization.invites.where(redeemed_at: nil)
+  end
+
 end

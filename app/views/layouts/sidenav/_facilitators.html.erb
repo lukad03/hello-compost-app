@@ -1,9 +1,18 @@
 <li>
   <span class="nav-title">Facilitators <%= link_to "+", new_organization_invite_path(current_organization) %></span>
     <ul>
-    <% if facilitators.any? %>
+    <% if facilitators.any? || invites.any? %>
       <% facilitators.each do |facilitator| %>
         <li><%= link_to facilitator.name, organization_facilitator_path(current_organization, facilitator) %></li>
+      <% end %>
+      <% if invites.any? %>
+        <li class="invites">Pending Invites
+          <ul>
+            <% invites.each do |invite| %>
+              <li><%= invite.email %></li>
+            <% end %>
+          </ul>
+        </li>
       <% end %>
     <% else %>
         <li><%= link_to 'Add Facilitators', new_organization_invite_path(current_organization) %></li>
