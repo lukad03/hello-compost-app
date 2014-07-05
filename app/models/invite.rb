@@ -5,7 +5,6 @@ class Invite < ActiveRecord::Base
   has_many :locations, through: :invite_locations
 
   validates :email, presence: true, uniqueness: true
-  validate :existing_facilitator
   validates :organization, presence: true
 
   def invited?
@@ -22,16 +21,6 @@ class Invite < ActiveRecord::Base
   end
 
   def redeemed!
-    self.redeemed_at = Time.now.utc
-    self.save
+    self.update(redeemed_at: Time.now.utc)
   end
-
-  private
-
-  def existing_facilitator
-    if User.where(email: email).any?
-      errors.add(:email, :in_use)
-    end
-  end
-
 end
