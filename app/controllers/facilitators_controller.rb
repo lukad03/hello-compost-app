@@ -14,8 +14,6 @@ class FacilitatorsController < ApplicationController
 
   def create
     @facilitator = new_facilitator
-    @facilitator.organization = organization
-
     @invite = Invite.find_redeemable(@facilitator.user.email)
 
     if @invite
@@ -75,10 +73,11 @@ class FacilitatorsController < ApplicationController
   end
 
   def facilitator_params
-    params.require(:facilitator).permit(
-      :name, :organization_name, location_ids: [],
-      user_attributes: [:email, :id, :password, :password_confirmation]
-    )
+    params.require(:facilitator)
+    .permit(:name, :organization_name, location_ids: [],
+                   user_attributes: [:email, :id, :password,
+                                     :password_confirmation])
+    .merge(organization_id: organization.id)
   end
 
 end

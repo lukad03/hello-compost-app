@@ -18,6 +18,7 @@ Rails.application.routes.draw do
 
   resources :clients, only: [:show, :update, :destroy] do
     resources :debits, only: [:create, :destroy]
+    resources :credits, only: [:new, :create]
   end
 
   get '/clients/:id/credits/redeem', to: 'debits#new', as: 'redeem_credits'

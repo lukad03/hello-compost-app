@@ -1,0 +1,8 @@
+<header>
+<h1>Add Credits</h1>
+</header>
+
+<%= simple_form_for [client, @credit] do |credit| %>
+  <%= credit.input :value, label: 'Add Credits', required: true, type: :integer %>
+  <%= credit.button :submit, 'Add Credits' %>
+<% end %>
