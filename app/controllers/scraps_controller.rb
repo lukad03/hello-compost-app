@@ -6,9 +6,9 @@ class ScrapsController < ApplicationController
   end
 
   def new
-    @location = Location.where(name: params[:name]).first
+    @location = Location.where(name: params[:location_name]).first
     @scrap = Scrap.new
-    @scrap.build_client
+    @clients = Client.where(location_id: @location.id).collect {|x| [x.username, x.id]}
   end
 
   def create

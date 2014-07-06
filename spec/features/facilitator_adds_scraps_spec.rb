@@ -2,11 +2,13 @@ require "spec_helper"
 
 feature 'Scrap creation' do
     scenario 'Facilitator logs in and adds client scrap' do
-      client = create( :client, username: 'resident', location: location )
+      organization = create(:organization)
+      location = create(:location, organization: organization)
+      client = create(:client, username: 'resident', location: location)
 
-      facilitator_setup
+      facilitator_setup(organization)
 
-      visit new_location_scrap_path(location)
+      visit new_location_scrap_path(location.name)
       fill_in 'scrap_weight', with: '2.27'
       select 'resident', from: 'scrap_client_id'
 
@@ -24,11 +26,7 @@ feature 'Scrap creation' do
       create(:organization, name: 'Cheerio')
     end
 
-    def location
-      create(:location, organization: organization)
-    end
-
-    def facilitator_setup
+    def facilitator_setup(organization)
       facilitator = create( :facilitator, organization: organization )
       user = create( :user, rolable_type: 'Facilitator', rolable_id: facilitator.id )
 
