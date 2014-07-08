@@ -7,7 +7,7 @@
   <%= invite.input :email %>
 
   <%= invite.association :locations, collection: locations, as: :check_boxes,
-  label_method: :name, value_method: :id %>
+  label_method: lambda { |location| "<span class='check'></span><span class='location-name'>#{location.name}</span>".html_safe }, value_method: :id, :label => false %>
 
   <%= invite.button :submit, 'Send Invite' %>
 

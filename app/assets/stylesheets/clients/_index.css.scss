@@ -1,7 +1,35 @@
 .clients-index{
 
-  .actions{
-    float: right;
+  .clients-list{
+
+    li{
+      display: block;
+      height: 65px;
+      margin: 0 0 10px 0;
+
+      .client-icon{
+        background: $brand-teal;
+        border-radius: 2em;
+        color: white;
+        float: left;
+        font-size: 2em;
+        height: 65px;
+        margin-right: 10px;
+        padding-top: 20px;
+        text-align: center;
+        width: 65px;
+      }
+
+      .client-info{
+        margin-left: 10px;
+        padding-top: 15px;
+
+        .actions{
+          float: right;
+          padding: 0;
+        }
+      }
+    }
   }
 
   h2{
