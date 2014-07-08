@@ -13,5 +13,5 @@
 <%= simple_form_for [@location, @scrap] do |scrap| %>
   <%= scrap.input :weight, label: 'How much does your waste weigh?', required: true %>
   <%= scrap.select :client_id, @clients %>
-  <%= scrap.button :submit %>
+  <%= scrap.button :submit, class: "primary-button" %>
 <% end %>

@@ -1,12 +1,19 @@
+.locations{
+  .main-content{
+    padding: 0;
+  }
+}
+
 .main-content{
   background: #eee;
+  padding: 8em 4em 0;
   height:100%;
 
-  a.primary-button{
+  .primary-button{
     @include button($brand-green);
     padding: .60em 1em;
   }
-  a.secondary-button{
+  .secondary-button{
     @include button($brand-teal);
     padding: .60em 1em;
   }

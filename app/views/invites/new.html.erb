@@ -1,5 +1,6 @@
 <header>
-  <h1>Send an Invite</h1>
+  <h1>Invite a Facilitator</h1>
+  <p>Facilitators can only manage the locations you assign them to.</p>
 </header>
 
 <%= simple_form_for [@organization, @invite] do |invite| %>
@@ -7,8 +8,9 @@
   <%= invite.input :email %>
 
   <%= invite.association :locations, collection: locations, as: :check_boxes,
-  label_method: :name, value_method: :id %>
+  label_method: lambda { |location| "<span class='check'></span><span class='location-name'>#{location.name}</span>".html_safe },
+  value_method: :id, label: "Locations to Manage", required: true %>
 
-  <%= invite.button :submit, 'Send Invite' %>
+  <%= invite.button :submit, 'Send Invite', class: "primary-button" %>
 
 <% end %>

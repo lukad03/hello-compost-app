@@ -2,5 +2,5 @@
 
 <%= simple_form_for [@location, @client], url: location_clients_path(@location.name) do |client| %>
   <%= client.input :username, required: true %>
-  <%= client.submit 'Add Client' %>
+  <%= client.submit 'Add Client', class: "primary-button" %>
 <% end %>

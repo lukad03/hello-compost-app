@@ -33,7 +33,7 @@ class LocationsController < ApplicationController
 
   def location_params
     params.require(:location)
-    .permit(:name, :address, :longitude, :latitude, :organization_id)
+    .permit(:name, :address, :hours, :longitude, :latitude, :organization_id)
     .merge(organization_id: current_organization.id)
   end
 end

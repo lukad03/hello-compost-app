@@ -1,14 +1,17 @@
 <h1><%= @client.username %></h1>
 
-<h2>Credits</h2>
-<p><%= available_credits %> Credits</p>
-<p><%= link_to 'Redeem Credits', redeem_credits_path(@client) %></p>
+<section class="credits">
+  <div class="credits-meter">
+    <div class="available-credits" style="width: <%= credit_percentage.round %>%;"></div>
+  </div>
+  <p><%= available_credits %>/1000 Credits</p>
+  <div class="actions">
+    <%= link_to 'Redeem Credits', redeem_credits_path(@client), class: 'primary-button' %>
+    <%= link_to 'Add Credits', new_client_credit_path(@client), class: 'secondary-button' %>
+  </div>
+</section>
 
-<h2>Scraps</h2>
-<ul>
-  <% @scraps.each do |scrap| %>
-    <li>
-      <p><%= scrap.weight %></p>
-    </li>
-  <% end %>
-</ul>
+<section class="scraps">
+  <h2>Total Scraps</h2>
+  <p><%= @total_scraps %></p>
+</section>

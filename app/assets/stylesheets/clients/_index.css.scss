@@ -1,7 +1,23 @@
 .clients-index{
 
-  .actions{
-    float: right;
+  .clients-list{
+
+    li{
+      border-bottom: 1px solid #ccc;
+      display: block;
+      height: 65px;
+      margin: 0 0 10px 0;
+
+      .client-info{
+        margin-left: 10px;
+        padding-top: 10px;
+
+        .actions{
+          float: right;
+          padding: 0;
+        }
+      }
+    }
   }
 
   h2{

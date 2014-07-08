@@ -22,7 +22,7 @@ class ClientsController < ApplicationController
 
   def show
     @client = client
-    @scraps = Scrap.where(client_id: client)
+    @total_scraps = @client.scraps.sum(:weight)
   end
 
   private
@@ -31,11 +31,6 @@ class ClientsController < ApplicationController
     @_client ||= Client.find(params[:id])
   end
 
-  def available_credits
-    existing_credits - existing_debits
-  end
-  helper_method :available_credits
-
   def existing_credits
     Credit.where(client_id: client).sum(:value)
   end
@@ -43,6 +38,16 @@ class ClientsController < ApplicationController
   def existing_debits
     Debit.where(client_id: client).sum(:value)
   end
+
+  def available_credits
+    existing_credits - existing_debits
+  end
+  helper_method :available_credits
+
+  def credit_percentage
+    (available_credits.to_f / 1000) * 100
+  end
+  helper_method :credit_percentage
 
   def location
     Location.find_by_name(params[:location_name])
