@@ -1,12 +1,11 @@
 <ul class="clients-list">
   <% @clients.each do |client| %>
   <li>
-    <div class="client-icon"><%= client.username[0].upcase %></div>
     <div class="client-info">
       <h2><%= link_to client.username, client_path(client) %></h2>
       <div class="actions">
-        <%= link_to 'Add Credits', new_client_credit_path(client), class: 'primary-button' %>
-        <%= link_to 'Redeem Credits', redeem_credits_path(client), class: 'secondary-button' %>
+        <%= link_to 'Redeem Credits', redeem_credits_path(client), class: 'primary-button' %>
+        <%= link_to 'Add Credits', new_client_credit_path(client), class: 'secondary-button' %>
       </div>
     </div>
   </li>

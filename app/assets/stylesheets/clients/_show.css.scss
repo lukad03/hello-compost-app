@@ -1,0 +1,36 @@
+.clients-show{
+
+  h1{
+    text-align: center;
+  }
+
+  .actions{
+    text-align: center;
+  }
+
+  .credits{
+
+    p{
+      margin-top: 10px;
+      text-align: center;
+    }
+
+    .credits-meter{
+      background: white;
+      border-radius: 5px;
+      height: 10px;
+      margin: 30px auto 0;
+      width: 600px;
+
+      .available-credits{
+        background: $brand-teal;
+        border-radius: 5px;
+        height: 100%;
+      }
+    }
+  }
+
+  .scraps{
+    margin-top: 30px;
+  }
+}

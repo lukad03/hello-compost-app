@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140621020108) do
+ActiveRecord::Schema.define(version: 20140710025002) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -85,14 +85,14 @@ ActiveRecord::Schema.define(version: 20140621020108) do
   add_index "invites", ["organization_id"], name: "index_invites_on_organization_id", using: :btree
 
   create_table "locations", force: true do |t|
+    t.string   "address",         null: false
+    t.string   "name",            null: false
+    t.float    "latitude",        null: false
+    t.float    "longitude",       null: false
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "organization_id"
-    t.string   "name"
-    t.float    "latitude"
-    t.string   "longitude"
-    t.string   "float"
-    t.string   "address"
+    t.string   "hours"
   end
 
   create_table "organizations", force: true do |t|

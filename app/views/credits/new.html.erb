@@ -1,8 +1,11 @@
 <header>
-<h1>Add Credits</h1>
+<h1>Add Credits for <%= client.username %></h1>
+<p>
+  Use this feature only when you need to manually add credits to a client's account.
+</p>
 </header>
 
 <%= simple_form_for [client, @credit] do |credit| %>
   <%= credit.input :value, label: 'Add Credits', required: true, type: :integer %>
-  <%= credit.button :submit, 'Add Credits' %>
+  <%= credit.button :submit, 'Add Credits', class: "primary-button" %>
 <% end %>

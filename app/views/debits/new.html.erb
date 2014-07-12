@@ -4,5 +4,5 @@
 
 <%= simple_form_for [client, @debit] do |debit| %>
   <%= debit.input :value, label: 'Credits to Redeem', required: true, type: :integer %>
-  <%= debit.button :submit, 'Redeem' %>
+  <%= debit.button :submit, 'Redeem', class: "primary-button" %>
 <% end %>
