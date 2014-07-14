@@ -1,4 +1,5 @@
 class FacilitatorsController < ApplicationController
+  before_filter :new, only: [:new, :create]
   load_and_authorize_resource
   skip_load_resource only: [:new, :create]
 
@@ -14,7 +15,7 @@ class FacilitatorsController < ApplicationController
 
   def create
     @facilitator = new_facilitator
-    @invite = Invite.find_redeemable(@facilitator.user.email)
+    @invite = find_invite(@facilitator.user.email)
 
     if @invite
       if @facilitator.save
@@ -27,7 +28,7 @@ class FacilitatorsController < ApplicationController
         redirect_to new_organization_facilitator_path(organization)
       end
     else
-      flash[:error] = "You have'nt been invited by any organizations yet"
+      flash[:error] = "You haven't been invited by this organization"
       redirect_to root_path
     end
   end
@@ -64,6 +65,10 @@ class FacilitatorsController < ApplicationController
 
   def invite_locations
     InviteLocation.where(invite_id: invite)
+  end
+
+  def find_invite(email)
+    Invite.where(redeemed_at: nil, email: email, organization_id: organization.id).first
   end
 
   def facilitator_locations(facilitator)

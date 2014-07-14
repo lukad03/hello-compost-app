@@ -4,7 +4,7 @@ feature 'Facilitator Registration' do
 
   scenario 'Facilitator visits registration page and creates an account' do
     organization = create(:organization)
-    invite = create(:invite, email: 'user2@email.com')
+    invite = create(:invite, email: 'user2@email.com', organization: organization)
     location = create(:location, name: 'Test Location', organization: organization)
     invite_location = create(:invite_location, invite: invite,
                                                location: location)

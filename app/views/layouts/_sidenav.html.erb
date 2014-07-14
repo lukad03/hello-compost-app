@@ -4,7 +4,7 @@
   </div>
   <ul class="nav-user">
     <li><%= link_to current_user.rolable.name, edit_user_registration_path %></li>
-    <li><%= current_organization %></li>
+    <li><%= organization_name %></li>
   </ul>
   <ul class="nav-actions">
     <li><span class="nav-title"><%= link_to 'Dashboard', admin_dashboard_path %></span></li>
@@ -18,7 +18,7 @@
     <li>
       <span class="nav-title">Clients</span>
       <ul>
-        <li><%= link_to 'Manage Clients', organization_clients_path(current_organization) %></li>
+        <li><%= link_to 'Manage Clients', organization_clients_path(organization_name) %></li>
       </ul>
     </li>
 

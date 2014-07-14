@@ -27,20 +27,24 @@ module ApplicationHelper
     html.html_safe
   end
 
-  def current_organization
+  def organization_name
     current_user.rolable.organization.name
   end
 
-  def locations
-    current_user.rolable.organization.locations
+  def organization_locations
+    current_organization.locations
   end
 
-  def facilitators
-    current_user.rolable.organization.facilitators
+  def organization_facilitators
+    current_organization.facilitators
   end
 
-  def invites
-    current_user.rolable.organization.invites.where(redeemed_at: nil)
+  def organization_invites
+    current_organization.invites.where(redeemed_at: nil)
+  end
+
+  def current_organization
+    current_user.rolable.organization
   end
 
 end
