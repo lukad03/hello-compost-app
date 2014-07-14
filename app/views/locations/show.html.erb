@@ -4,7 +4,7 @@
   <h1><%= @location.name %></h1>
   <h2><%= @location.organization.name %></h2>
 
-  <% if user_signed_in? && current_user.has_role?('Admin', 'Facilitator') %>
+  <% if user_signed_in? && current_user.has_role?('Admin') || user_signed_in? && current_user.rolable.locations == @location %>
     <div class="add-scraps">
       <%= link_to 'Add Scraps', new_location_scrap_path(@location.name), class: 'primary-button' %>
       <%= link_to 'Add Client', new_location_client_path(@location.name), class: 'secondary-button' %>

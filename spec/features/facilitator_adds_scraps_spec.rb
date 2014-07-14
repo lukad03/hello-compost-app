@@ -19,7 +19,7 @@ feature 'Scrap creation' do
 
       visit client_path(client)
       expect(page).to have_text('resident')
-      expect(page).to have_text('227 Credits')
+      expect(page).to have_text('227/1000 Credits')
     end
 
     def organization

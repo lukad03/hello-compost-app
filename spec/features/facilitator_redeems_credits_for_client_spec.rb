@@ -16,7 +16,7 @@ feature 'Redeem Credits' do
       click_button 'Redeem'
 
       expect(page).to have_text 'Credits Redeemed!'
-      expect(page).to have_text '100 Credits'
+      expect(page).to have_text '100/1000 Credits'
     end
   end
 

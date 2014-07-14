@@ -6,7 +6,7 @@ class User < ActiveRecord::Base
    belongs_to :rolable, polymorphic: true, dependent: :destroy
 
   def has_role?(*role_names)
-    self.rolable(name: role_names).present?
+    role_names.include?(self.rolable_type)
   end
 
 end

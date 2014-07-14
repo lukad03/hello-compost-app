@@ -20,8 +20,8 @@ class FacilitatorDashboard
     @user.created_at.strftime("%B %Y")
   end
 
-  def locations
-    Location.where(id: @user.locations)
+  def managed_locations
+    @user.locations
   end
 
   private
@@ -31,7 +31,7 @@ class FacilitatorDashboard
   end
 
   def clients
-    Client.where(organization_id: @user.organization_id, location_id: locations)
+    Client.where(organization_id: @user.organization_id, location_id: managed_locations)
   end
 
   def last_week
