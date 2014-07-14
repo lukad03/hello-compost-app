@@ -1,13 +1,31 @@
 <ul class="clients-list">
-  <% @clients.each do |client| %>
-  <li>
-    <div class="client-info">
-      <h2><%= link_to client.username, client_path(client) %></h2>
-      <div class="actions">
-        <%= link_to 'Redeem Credits', redeem_credits_path(client), class: 'primary-button' %>
-        <%= link_to 'Add Credits', new_client_credit_path(client), class: 'secondary-button' %>
-      </div>
-    </div>
-  </li>
+  <% if current_user.has_role?('Admin') %>
+    <% @clients.each do |client| %>
+      <li>
+        <div class="client-info">
+          <h2><%= link_to client.username, client_path(client) %></h2>
+          <div class="actions">
+            <%= link_to 'Redeem Credits', redeem_credits_path(client), class: 'primary-button' %>
+            <%= link_to 'Add Credits', new_client_credit_path(client), class: 'secondary-button' %>
+          </div>
+        </div>
+      </li>
+    <% end %>
+
+  <% elsif current_user.has_role?('Facilitator') %>
+    <% current_user.rolable.locations.each do |location| %>
+      <h1><%= location.name %></h1>
+      <% location.clients.each do |client| %>
+        <li>
+          <div class="client-info">
+            <h2><%= link_to client.username, client_path(client) %></h2>
+            <div class="actions">
+              <%= link_to 'Redeem Credits', redeem_credits_path(client), class: 'primary-button' %>
+              <%= link_to 'Add Credits', new_client_credit_path(client), class: 'secondary-button' %>
+            </div>
+          </div>
+        </li>
+      <% end %>
+    <% end %>
   <% end %>
-</ul>
+  </ul>

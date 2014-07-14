@@ -5,10 +5,18 @@
     <% end %>
   </span>
   <ul>
-  <% if locations.any? %>
-      <% locations.each do |location| %>
+  <% if current_user.has_role?('Admin') %>
+    <% if organization_locations.any? %>
+        <% organization_locations.each do |location| %>
+          <li><%= link_to location.name, location_path(location.name) %></li>
+        <% end %>
+    <% end %>
+  <% elsif current_user.has_role?('Facilitator') %>
+    <% if current_user.rolable.locations.any? %>
+      <% current_user.rolable.locations.each do |location| %>
         <li><%= link_to location.name, location_path(location.name) %></li>
       <% end %>
+    <% end %>
   <% end %>
   </ul>
 </li>
