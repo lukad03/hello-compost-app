@@ -4,4 +4,6 @@ class Admin < ActiveRecord::Base
 
   accepts_nested_attributes_for :user
   accepts_nested_attributes_for :organization
+
+  validates :name, presence: true
 end

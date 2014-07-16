@@ -24,6 +24,16 @@ class LocationsController < ApplicationController
     end
   end
 
+  def edit
+    @location = Location.where(name: params[:name]).first
+  end
+
+  def update
+    @location = Location.where(name: params[:name]).first
+    @location.update_attributes(location_params)
+    respond_with @location
+  end
+
   private
 
   def organization

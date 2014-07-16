@@ -1,5 +1,5 @@
 .side-nav {
-  background: #304656;
+  background: $blue-gray;
   height: 100%;
   position: absolute;
   width: 250px;
@@ -90,4 +90,46 @@
       }
     }
   }
+
+  &.no-locations{
+
+    .clients{
+
+      a{
+        color: lighten($blue-gray, 10);
+
+        &:hover{
+          color: lighten($blue-gray, 10);
+        }
+      }
+
+      .nav-title{
+        color: lighten($blue-gray, 10);
+
+        a{
+          color: lighten($blue-gray, 10);
+        }
+      }
+    }
+
+    .facilitators{
+
+      a{
+        color: lighten($blue-gray, 10);
+
+        &:hover{
+          color: lighten($blue-gray, 10);
+        }
+      }
+
+      .nav-title{
+        color: lighten($blue-gray, 10);
+
+        a{
+          color: lighten($blue-gray, 10);
+        }
+      }
+    }
+  }
 }
+

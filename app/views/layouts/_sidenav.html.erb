@@ -1,4 +1,4 @@
-<nav class="side-nav">
+<nav class="side-nav <%= signup_steps %>">
   <div class="logo">
     <a href="http://hellocompost.com"><img src="http://hellocompost.com/wp-content/themes/hello/images/hello-compost-rails.svg"></a>
   </div>
@@ -15,7 +15,7 @@
       <%= render 'layouts/sidenav/facilitators' %>
     <% end %>
 
-    <li>
+    <li class="clients">
       <span class="nav-title">Clients</span>
       <ul>
         <li><%= link_to 'Manage Clients', organization_clients_path(organization_name) %></li>

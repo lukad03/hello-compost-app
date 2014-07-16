@@ -8,7 +8,7 @@
   <% if current_user.has_role?('Admin') %>
     <% if organization_locations.any? %>
         <% organization_locations.each do |location| %>
-          <li><%= link_to location.name, location_path(location.name) %></li>
+          <li><%= link_to location.name, location_path(location.name) %> <%= link_to "v", edit_location_path(location.name) %></li>
         <% end %>
     <% end %>
   <% elsif current_user.has_role?('Facilitator') %>

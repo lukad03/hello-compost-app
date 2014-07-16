@@ -47,4 +47,14 @@ module ApplicationHelper
     current_user.rolable.organization
   end
 
+  def signup_steps
+    if !organization_locations.exists?
+      "no-locations no-clients no-facilitators"
+    elsif !current_organization.clients.exists?
+      "no-clients no-facilitators"
+    elsif !organization_facilitators.exists?
+      "no-facilitators"
+    end
+  end
+
 end
