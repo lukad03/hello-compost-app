@@ -1,7 +1,7 @@
 class Organization < ActiveRecord::Base
-  has_many :admins
-  has_many :clients
-  has_many :facilitators
-  has_many :invites
-  has_many :locations
+  has_many :admins, dependent: :destroy
+  has_many :clients, dependent: :destroy
+  has_many :facilitators, dependent: :destroy
+  has_many :invites, dependent: :destroy
+  has_many :locations, dependent: :destroy
 end

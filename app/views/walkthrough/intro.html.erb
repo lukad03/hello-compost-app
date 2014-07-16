@@ -1,0 +1,25 @@
+<h1 class="welcome">Welcome To</h1>
+<h1 class="logo">
+  <img src="http://hellocompost.com/wp-content/themes/hello/images/hello-compost-rails.svg">
+  <div class="logo-title">Hello Compost</div>
+</h1>
+
+<div class="message">
+  <p>Hello Compost enables groups to collect food scraps and give credits towards fresh produce to participants in return.</p>
+  <p>To get you started, we’d like to take you on a brief tour of Hello Compost.</p>
+
+  <div class="continue-button">
+    <%= link_to "Get Started", walkthrough_locations_path, class: "secondary-button" %>
+  </div>
+
+  <div class="walkthrough-steps">
+    <ul class="clearfix">
+      <li class="active"><%= link_to "", walkthrough_intro_path %></li>
+      <li class="inactive"><%= link_to "", walkthrough_locations_path %></li>
+      <li class="inactive"><%= link_to "", walkthrough_facilitators_path %></li>
+      <li class="inactive"><%= link_to "", walkthrough_clients_path %></li>
+      <li class="inactive"><%= link_to "", walkthrough_scraps_and_credits_path %></li>
+      <li class="inactive"><%= link_to "", walkthrough_outro_path %></li>
+    </ul>
+  </div>
+</div>

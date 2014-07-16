@@ -5,4 +5,6 @@ class Facilitator < ActiveRecord::Base
   has_one :user, :as => :rolable
 
   accepts_nested_attributes_for :user
+
+  validates :name, presence: true
 end

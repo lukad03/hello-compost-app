@@ -17,11 +17,34 @@ class LocationsController < ApplicationController
     @location = Location.new(location_params)
     if @location.save
       flash[:success] = 'Location added'
-      redirect_to locations_path
+      redirect_to admin_dashboard_path
     else
       flash[:error] = 'The location failed to save'
       redirect_to new_location_path
     end
+  end
+
+  def edit
+    @location = Location.where(name: params[:name]).first
+  end
+
+  def update
+    @location = Location.find(params[:name])
+    if @location.update_attributes(location_params)
+      redirect_to location_path(@location.name)
+    else
+      redirect_to edit_location_path(@location.name)
+    end
+  end
+
+  def destroy
+    @location = Location.where(name: params[:name]).first
+    if @location.destroy
+      flash[:success] = "Location destroyed."
+    else
+      flash[:error] = "Unable to destroy location."
+    end
+    redirect_to admin_dashboard_path
   end
 
   private

@@ -1,5 +1,6 @@
 require 'spec_helper'
 
 describe InviteLocation do
-  pending "add some examples to (or delete) #{__FILE__}"
+  it { should belong_to :invite}
+  it { should belong_to :location}
 end

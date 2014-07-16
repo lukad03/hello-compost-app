@@ -4,8 +4,8 @@ FactoryGirl.define do
   factory :location do
     sequence(:name) { |n| "Location#{n}" }
     sequence(:address) { |n| "#{n} Main Street" }
-    sequence(:latitude) { |n| "#{n}"}
-    sequence(:longitude) { |n| "#{n}" }
+    sequence(:latitude) { |n| "1#{n}"}
+    sequence(:longitude) { |n| "1#{n}" }
     organization
   end
 end

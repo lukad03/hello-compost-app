@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe 'Assign Locations' do
+feature 'Assign Locations' do
   scenario 'An admin updates a facilitator to have new locations' do
     organization = create(:organization, name: "Organization")
     location = create(:location, organization: organization, name: "Location1")
@@ -12,7 +12,7 @@ describe 'Assign Locations' do
 
     visit organization_facilitator_path(organization.name, facilitator)
 
-    click_link 'Add Locations'
+    click_link 'Assign Locations'
     check "Location1"
 
     click_button 'Update'

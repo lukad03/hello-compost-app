@@ -1,0 +1,6 @@
+<nav class="page-nav">
+  <ul>
+    <li><%= link_to "Edit Profile", edit_admin_path(current_user.rolable), class: current_page(edit_admin_path(current_user.rolable)) %></li>
+    <li><%= link_to "Edit Organization", edit_organization_path(current_organization.name), class: current_page(edit_organization_path(current_organization.name)) %></li>
+  </ul>
+</nav>

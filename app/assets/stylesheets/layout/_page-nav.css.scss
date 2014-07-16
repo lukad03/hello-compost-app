@@ -1,0 +1,23 @@
+.page-nav{
+  ul{
+    display: inline-block;
+    float: right;
+    margin-top: 15px;
+
+    li{
+      float: left;
+      margin-right: 10px;
+
+      &:last-child{
+        margin-right: 0;
+      }
+
+      a{
+
+        &.current{
+          color: $brand-green;
+        }
+      }
+    }
+  }
+}

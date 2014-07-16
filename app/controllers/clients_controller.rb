@@ -16,7 +16,7 @@ class ClientsController < ApplicationController
       redirect_to location_path(location.name)
     else
       flash[:error] = "Something went wrong. Please try again."
-      redirect_to location_client_new_path(location.name)
+      redirect_to new_location_client_path(location.name)
     end
   end
 

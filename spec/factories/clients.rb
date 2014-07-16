@@ -2,6 +2,7 @@
 
 FactoryGirl.define do
   factory :client do
+    sequence(:username) { |n| "username-#{n}" }
     trait :with_scraps do
       after :create do |client|
         create_list(

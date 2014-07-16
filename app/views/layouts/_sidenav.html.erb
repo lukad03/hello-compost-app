@@ -1,13 +1,33 @@
-<nav class="side-nav">
+<nav class="side-nav <%= signup_steps %>">
   <div class="logo">
-    <a href="http://hellocompost.com"><img src="http://hellocompost.com/wp-content/themes/hello/images/hello-compost-rails.svg"></a>
+  <% if current_user.has_role?('Admin') %>
+    <%= link_to admin_dashboard_path do %>
+      <img src="http://hellocompost.com/wp-content/themes/hello/images/hello-compost-rails.svg">
+    <% end %>
+  <% elsif current_user.has_role?('Facilitator') %>
+    <%= link_to facilitator_dashboard_path do %>
+      <img src="http://hellocompost.com/wp-content/themes/hello/images/hello-compost-rails.svg">
+    <% end %>
+  <% end %>
   </div>
+
   <ul class="nav-user">
-    <li><%= link_to current_user.rolable.name, edit_user_registration_path %></li>
-    <li><%= organization_name %></li>
+    <% if current_user.has_role?('Admin') %>
+      <li><%= link_to current_user.rolable.name, edit_admin_path(current_user.rolable.id), class: current_page(edit_admin_path(current_user.rolable.id)) %></li>
+      <li><%= link_to organization_name, edit_organization_path(organization_name), class: current_page(edit_organization_path(organization_name)) %></li>
+
+    <% elsif current_user.has_role?('Facilitator') %>
+      <li><%= link_to current_user.rolable.name, edit_organization_facilitator_path(organization_name, current_user.rolable.id), class: current_page(edit_organization_facilitator_path(organization_name, current_user.rolable.id)) %></li>
+      <li><%= organization_name %></li>
+    <% end %>
   </ul>
+
   <ul class="nav-actions">
-    <li><span class="nav-title"><%= link_to 'Dashboard', admin_dashboard_path %></span></li>
+    <% if current_user.has_role?('Admin') %>
+      <li><span class="nav-title"><%= link_to 'Dashboard', admin_dashboard_path, class: current_page(admin_dashboard_path) %></span></li>
+    <% elsif current_user.has_role?('Facilitator') %>
+      <li><span class="nav-title"><%= link_to 'Dashboard', facilitator_dashboard_path, class: current_page(facilitator_dashboard_path) %></span></li>
+    <% end %>
 
     <%= render 'layouts/sidenav/locations' %>
 
@@ -15,16 +35,15 @@
       <%= render 'layouts/sidenav/facilitators' %>
     <% end %>
 
-    <li>
-      <span class="nav-title">Clients</span>
+    <li class="clients">
+      <span class="nav-title <%= current_page(organization_clients_path(organization_name)) %>">Clients</span>
       <ul>
-        <li><%= link_to 'Manage Clients', organization_clients_path(organization_name) %></li>
+        <li class="sub-link"><%= link_to 'Manage Clients', organization_clients_path(organization_name) %></li>
       </ul>
     </li>
 
   </ul>
   <ul>
-    <li><%= link_to current_user.email, edit_user_registration_path %></li>
     <li><%= link_to "Log Out", destroy_user_session_path, method: :delete %></li>
   </ul>
 </nav>

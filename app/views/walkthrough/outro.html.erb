@@ -1,0 +1,21 @@
+<h1 class="welcome">You're Ready!</h1>
+
+<div class="message">
+  <p>Congratulations! You're ready to start collecting food scraps.</p>
+  <p>If you have any questions, you can find us on Twitter or email us at support@hellocompost.com.</p>
+
+  <div class="continue-button">
+    <%= link_to "Finish", admin_dashboard_path, class: "secondary-button" %>
+  </div>
+
+  <div class="walkthrough-steps">
+    <ul class="clearfix">
+      <li class="inactive"><%= link_to "", walkthrough_intro_path %></li>
+      <li class="inactive"><%= link_to "", walkthrough_locations_path %></li>
+      <li class="inactive"><%= link_to "", walkthrough_facilitators_path %></li>
+      <li class="inactive"><%= link_to "", walkthrough_clients_path %></li>
+      <li class="inactive"><%= link_to "", walkthrough_scraps_and_credits_path %></li>
+      <li class="active"><%= link_to "", walkthrough_outro_path %></li>
+    </ul>
+  </div>
+</div>

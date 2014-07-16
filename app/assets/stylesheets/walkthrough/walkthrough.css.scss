@@ -1,0 +1,151 @@
+.walkthrough{
+
+  h1{
+    font-weight: 700;
+    font-size: 1.25em;
+    margin-bottom: 10px;
+    text-align: center;
+
+    &.logo{
+      margin: 0 auto;
+      width: 300px;
+
+      .logo-title{
+        height: 0px;
+        overflow: hidden;
+        text-indent: -9999px;
+      }
+    }
+  }
+
+  .icon{
+    height: 200px;
+    margin-top: 20px;
+    text-align: center;
+    width: 100%;
+
+    img{
+      height: 100%;
+      width: auto;
+    }
+  }
+
+  .walkthrough-steps{
+
+    ul{
+      margin: 20px auto 0;
+      width: 112px;
+
+      li{
+        float: left;
+        margin-right: 8px;
+
+        a{
+          background: darken($light-gray, 30);
+          border-radius: 6px;
+          display: inline-block;
+          height: 12px;
+          width: 12px;
+        }
+
+        &:nth-of-type(6){
+          margin-right: 0;
+        }
+
+        &.active{
+
+          a{
+            background: $brand-green;
+          }
+        }
+      }
+    }
+  }
+
+  .message{
+    margin: 0 auto ;
+    width: 400px;
+
+    p{
+
+      &:nth-of-type(1){
+        margin: 25px 0 20px;
+      }
+    }
+
+    .continue-button{
+      margin-top: 30px;
+      text-align: center;
+    }
+  }
+
+  .side-nav{
+
+    ul{
+
+      li{
+
+        .nav-title{
+          color: lighten($blue-gray, 10);
+
+          a{
+            color: lighten($blue-gray, 10);
+
+            &.new{
+              display: none;
+            }
+          }
+        }
+
+        .sub-link{
+          display: none;
+        }
+      }
+    }
+  }
+
+  &.walkthrough-locations{
+    .side-nav{
+
+      ul{
+
+        li.locations{
+
+          .nav-title{
+            color: white;
+          }
+        }
+      }
+    }
+  }
+
+  &.walkthrough-facilitators{
+    .side-nav{
+
+      ul{
+
+        li.facilitators{
+
+          .nav-title{
+            color: white;
+          }
+        }
+      }
+    }
+  }
+
+  &.walkthrough-clients{
+    .side-nav{
+
+      ul{
+
+        li.clients{
+
+          .nav-title{
+            color: white;
+          }
+        }
+      }
+    }
+  }
+}
