@@ -13,15 +13,17 @@
   </div>
 
   <div class="location-content">
-    <h1>Edit a Location</h1>
+    <h1>Edit Location</h1>
     <%= location.input :name, label: 'Name:', maxlength: 50 %>
     <%= location.input :hours, label: 'Days and Hours:' %>
     <%= location.input :latitude, as: :hidden, value: '40.6893609' %>
     <%= location.input :longitude, as: :hidden, value: '-74.0444866' %>
 
-    <%= location.button :submit, value: "Add Location", class: "primary-button" %>
+    <%= location.button :submit, value: "Update Location", class: "primary-button" %>
   </div>
 <% end %>
+
+<%= link_to "Delete Location", location_path(@location.name), method: :delete %>
 
 <script type="text/javascript">
 var address_search = "#location_address";

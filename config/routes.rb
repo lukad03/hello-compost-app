@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   resources :admins
 
   get '/organizations/new', to: 'admins#new'
-  resources :organizations, only: [:index, :show], param: :name do
+  resources :organizations, only: [:index, :show, :edit, :update, :destroy], param: :name do
     resources :clients, only: [:index]
     resources :facilitators
     resources :invites
@@ -25,6 +25,13 @@ Rails.application.routes.draw do
 
   get '/dashboard/admin' => 'dashboard#admin', as: 'admin_dashboard'
   get '/dashboard/facilitator' => 'dashboard#facilitator', as: 'facilitator_dashboard'
+
+  get '/walkthrough/intro' => 'walkthrough#intro'
+  get '/walkthrough/locations' => 'walkthrough#locations'
+  get '/walkthrough/facilitators' => 'walkthrough#facilitators'
+  get '/walkthrough/clients' => 'walkthrough#clients'
+  get '/walkthrough/scraps-and-credits' => 'walkthrough#scraps_and_credits'
+  get '/walkthrough/outro' => 'walkthrough#outro'
 
   root :to => 'welcome#index'
 

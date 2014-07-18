@@ -18,7 +18,11 @@ class ApplicationController < ActionController::Base
   def after_sign_in_path_for(resource)
     case current_user.rolable_type
     when "Admin"
-      return admin_dashboard_path
+      unless (current_user.sign_in_count == 1)
+        return admin_dashboard_path
+      else
+        return walkthrough_intro_path
+      end
     when "Facilitator"
       return facilitator_dashboard_path
     when "Client"

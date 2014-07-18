@@ -1,5 +1,5 @@
 <li class="facilitators">
-  <span class="nav-title">Facilitators <%= link_to "+", new_organization_invite_path(organization_name) %></span>
+  <span class="nav-title">Facilitators <%= link_to "+", new_organization_invite_path(organization_name), class: 'new' %></span>
     <ul>
     <% if organization_facilitators.any? || organization_invites.any? %>
       <% organization_facilitators.each do |facilitator| %>
@@ -15,7 +15,7 @@
         </li>
       <% end %>
     <% else %>
-        <li><%= link_to 'Invite Facilitators', new_organization_invite_path(organization_name) %></li>
+        <li class="sub-link"><%= link_to 'Invite Facilitators', new_organization_invite_path(organization_name) %></li>
     <% end %>
     </ul>
 </li>

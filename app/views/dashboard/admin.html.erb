@@ -1,6 +1,6 @@
 <header>
-<h1><%= @admin.organization.name %></h1>
-<p>Member since <%= @admin.member_since %></p>
+<h1>Dashboard</h1>
+<h2><%= @admin.organization.name %></h2>
 </header>
 
 <% if @admin.organization.clients.exists? %>
@@ -17,11 +17,23 @@
 
 <% else %>
 
-  <section class="no-clients">
-    <p>
-      You haven't added any clients yet. Add clients to start populating your
-      dasboard
-    </p>
-  </section>
+  <% if !@admin.organization.locations.any? %>
 
+    <section class="no-locations">
+      <p>
+        Get started by adding a location from the left.
+      </p>
+    </section>
+
+  <% elsif !@admin.organization.clients.any? %>
+
+    <section class="no-clients">
+      <p>
+        Start adding clients at your locations to begin collecting scraps and populating your dashboard.
+      </p>
+      <p>
+        In the meantime, you can add more locations or invite facilitators.
+      </p>
+    </section>
+  <% end %>
 <% end %>

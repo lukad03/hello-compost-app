@@ -68,6 +68,34 @@
         }
       }
 
+      &.locations{
+
+        li{
+          height: 20px;
+          position: relative;
+
+          &:hover{
+            a.edit{
+            }
+          }
+
+          a{
+            display: inline-block;
+            width: 100%;
+
+            &.edit{
+              display: block;
+              height: 18px;
+              right: 10px;
+              top: 0;
+              position: absolute;
+              text-align: center;
+              width: 18px;
+            }
+          }
+        }
+      }
+
       .nav-title{
         color: white;
         font-size: 1.25em;
@@ -75,11 +103,25 @@
         a{
           color: white;
         }
+
+        &.current{
+          color: $brand-green;
+
+          a{
+            color: $brand-green;
+          }
+        }
       }
       a{
         color: lighten($blue-gray, 30);
 
-        &:hover{color: lighten($blue-gray, 60);}
+        &:hover{
+          color: lighten($blue-gray, 60);
+        }
+
+        &.current{
+            color: $brand-green;
+        }
       }
       ul{
 

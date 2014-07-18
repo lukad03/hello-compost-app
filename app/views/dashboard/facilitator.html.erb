@@ -1,6 +1,6 @@
 <header>
-<h1><%= @facilitator.organization.name %></h1>
-<p>Member since <%= @facilitator.member_since %></p>
+<h1>Dashboard</h1>
+<h2><%= @admin.organization.name %></h2>
 </header>
 
 <% if @facilitator.organization.clients.exists? %>

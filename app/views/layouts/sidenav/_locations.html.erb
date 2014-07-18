@@ -1,14 +1,19 @@
-<li>
-  <span class="nav-title">Locations
+<li class="locations">
+  <span class="nav-title <%= current_page(new_location_path) %>">Locations
     <% if current_user.has_role?('Admin') %>
-      <%= link_to "+", new_location_path %>
+      <%= link_to "+", new_location_path, class: 'new' %>
     <% end %>
   </span>
   <ul>
   <% if current_user.has_role?('Admin') %>
     <% if organization_locations.any? %>
         <% organization_locations.each do |location| %>
-          <li><%= link_to location.name, location_path(location.name) %> <%= link_to "v", edit_location_path(location.name) %></li>
+          <li>
+            <%= link_to location.name, location_path(location.name), class: current_page(location_path(location.name)) %>
+            <%= link_to edit_location_path(location.name), { class: 'edit'} do %>
+              <i class="fa fa-cog"></i>
+            <% end %>
+          </li>
         <% end %>
     <% end %>
   <% elsif current_user.has_role?('Facilitator') %>
