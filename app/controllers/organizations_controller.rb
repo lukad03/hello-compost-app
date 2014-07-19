@@ -13,11 +13,11 @@ class OrganizationsController < ApplicationController
   end
 
   def update
-    @organization = Organization.where(name: params[:name]).first
+    @organization = Organization.find(params[:name])
     if @organization.update_attributes(organization_params)
-      respond_with @organization
+      redirect_to admin_dashboard_path
     else
-      render :edit
+      redirect_to edit_organization_path(@organization.name)
     end
   end
 

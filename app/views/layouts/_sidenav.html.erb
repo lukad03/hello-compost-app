@@ -4,7 +4,7 @@
   </div>
   <ul class="nav-user">
     <li><%= link_to current_user.rolable.name, edit_user_registration_path %></li>
-    <li><%= organization_name %></li>
+    <li><%= link_to organization_name, edit_organization_path(organization_name), class: current_page(edit_organization_path(organization_name)) %></li>
   </ul>
   <ul class="nav-actions">
     <li><span class="nav-title"><%= link_to 'Dashboard', admin_dashboard_path, class: current_page(admin_dashboard_path) %></span></li>
@@ -16,7 +16,7 @@
     <% end %>
 
     <li class="clients">
-      <span class="nav-title">Clients</span>
+      <span class="nav-title <%= current_page(organization_clients_path(organization_name)) %>">Clients</span>
       <ul>
         <li class="sub-link"><%= link_to 'Manage Clients', organization_clients_path(organization_name) %></li>
       </ul>
@@ -24,7 +24,6 @@
 
   </ul>
   <ul>
-    <li><%= link_to current_user.email, edit_user_registration_path %></li>
     <li><%= link_to "Log Out", destroy_user_session_path, method: :delete %></li>
   </ul>
 </nav>

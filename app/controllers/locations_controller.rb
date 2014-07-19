@@ -29,9 +29,12 @@ class LocationsController < ApplicationController
   end
 
   def update
-    @location = Location.where(name: params[:name]).first
-    @location.update_attributes(location_params)
-    respond_with @location
+    @location = Location.find(params[:name])
+    if @location.update_attributes(location_params)
+      redirect_to location_path(@location.name)
+    else
+      redirect_to edit_location_path(@location.name)
+    end
   end
 
   def destroy

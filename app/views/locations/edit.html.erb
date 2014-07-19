@@ -20,10 +20,9 @@
     <%= location.input :longitude, as: :hidden, value: '-74.0444866' %>
 
     <%= location.button :submit, value: "Update Location", class: "primary-button" %>
+    <%= link_to "Delete Location", location_path(@location.name), method: :delete, class: "secondary-button" %>
   </div>
 <% end %>
-
-<%= link_to "Delete Location", location_path(@location.name), method: :delete %>
 
 <script type="text/javascript">
 var address_search = "#location_address";

@@ -38,8 +38,15 @@
       }
 
       &:nth-child(2){
-        color: lighten($blue-gray, 30);
         font-size: .9em;
+
+        a{
+          color: lighten($blue-gray, 30);
+
+          &.current{
+            color: $brand-green;
+          }
+        }
       }
     }
 
