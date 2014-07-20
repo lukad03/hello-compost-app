@@ -49,9 +49,9 @@ module ApplicationHelper
 
   def signup_steps
     if !organization_locations.exists?
-      "no-locations no-clients no-facilitators"
+      "no-locations"
     elsif !current_organization.clients.exists?
-      "no-clients no-facilitators"
+      "no-clients"
     elsif !organization_facilitators.exists?
       "no-facilitators"
     end

@@ -84,11 +84,6 @@
           height: 20px;
           position: relative;
 
-          &:hover{
-            a.edit{
-            }
-          }
-
           a{
             display: inline-block;
             width: 100%;
@@ -116,10 +111,6 @@
 
         &.current{
           color: $brand-green;
-
-          a{
-            color: $brand-green;
-          }
         }
       }
       a{
@@ -179,6 +170,60 @@
 
         a{
           color: lighten($blue-gray, 10);
+        }
+      }
+
+      ul{
+
+        li.invites{
+          color: lighten($blue-gray, 10);
+
+          ul{
+
+            li{
+              color: lighten($blue-gray, 10);
+            }
+          }
+        }
+      }
+    }
+
+    .locations{
+
+      .nav-title{
+        position: relative;
+
+        a.new{
+          background: $brand-teal;
+          border-radius: 5px;
+          display: block;
+          height: 22px;
+          top: 3px;
+          position: absolute;
+          right: -30px;
+          text-align: center;
+          width: 22px;
+        }
+      }
+    }
+  }
+  &.no-facilitators{
+
+    .facilitators{
+
+      .nav-title{
+        position: relative;
+
+        a.new{
+          background: $brand-teal;
+          border-radius: 5px;
+          display: block;
+          height: 22px;
+          top: 3px;
+          position: absolute;
+          right: -30px;
+          text-align: center;
+          width: 22px;
         }
       }
     }
