@@ -5,7 +5,7 @@
     <li><h2><%= location.name %></h2></li>
   <% end %>
   <% if current_user.has_role?('Admin') %>
-    <li><%= link_to "Add Location", edit_organization_facilitator_path(current_organization, @facilitator) %></li>
+    <li><%= link_to "Assign Locations", edit_organization_facilitator_path(current_organization.name, @facilitator) %></li>
   <% end %>
 </ul>
 

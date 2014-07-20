@@ -42,14 +42,16 @@
 
         a{
           color: lighten($blue-gray, 30);
+        }
+      }
 
-          &.current{
+      a{
+
+        &.current{
             color: $brand-green;
-          }
         }
       }
     }
-
   }
 
   ul.nav-actions{
@@ -64,6 +66,7 @@
       &.invites{
         color: white;
         line-height: 1.3em;
+        margin-top: 7px;
 
         ul{
           li{

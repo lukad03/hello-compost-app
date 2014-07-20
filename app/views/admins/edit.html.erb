@@ -1,0 +1,17 @@
+<header>
+  <h1>Edit Profile</h1>
+  <%= render 'layouts/pagenav/account_settings' %>
+</header>
+
+<%= simple_form_for @admin do |admin| %>
+
+  <%= admin.input :name %>
+
+  <%= admin.simple_fields_for :user, @user do |user| %>
+    <%= user.input :email %>
+    <%= user.input :password, label: "New Password" %>
+  <% end %>
+
+  <%= admin.button :submit, 'Update Profile' %>
+
+<% end %>

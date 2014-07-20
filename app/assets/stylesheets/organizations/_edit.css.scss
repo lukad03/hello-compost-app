@@ -1,0 +1,10 @@
+.organizations-edit{
+  header{
+    @include clearfix;
+    display: block;
+
+    h1{
+      float: left;
+    }
+  }
+}

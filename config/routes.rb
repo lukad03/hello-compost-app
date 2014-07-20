@@ -7,7 +7,7 @@ Rails.application.routes.draw do
     resources :clients, only: [:new, :create]
   end
 
-  resources :admins
+  resources :admins, only: [:new, :create, :edit, :update, :destroy]
 
   get '/organizations/new', to: 'admins#new'
   resources :organizations, only: [:index, :show, :edit, :update, :destroy], param: :name do

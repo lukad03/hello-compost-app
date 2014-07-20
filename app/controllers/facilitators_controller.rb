@@ -34,18 +34,18 @@ class FacilitatorsController < ApplicationController
   end
 
   def edit
-    @organization = Organization.find_by(params[:name])
+    @organization = organization
     @facilitator = Facilitator.find(params[:id])
   end
 
   def update
     @facilitator = Facilitator.find(params[:id])
-    if @facilitator.update_attributes(facilitator_params)
+    if @facilitator.update_attributes(edit_facilitator_params)
       flash[:success] = "Facilitator updated"
       redirect_to organization_facilitator_path(current_organization.name, @facilitator)
     else
       flash[:error] = "Update failed"
-      redirect_to facilitator_path(current_organization, @facilitator)
+      redirect_to facilitator_path(current_organization.name, @facilitator)
     end
   end
 
@@ -83,6 +83,13 @@ class FacilitatorsController < ApplicationController
                    user_attributes: [:email, :id, :password,
                                      :password_confirmation])
     .merge(organization_id: organization.id)
+  end
+
+  def edit_facilitator_params
+    params.require(:facilitator).
+    permit(:name, :organization_name, location_ids: [],
+           user_attributes: [:email, :id, :password,
+                                          :password_confirmation])
   end
 
 end

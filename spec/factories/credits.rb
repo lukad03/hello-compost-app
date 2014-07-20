@@ -3,5 +3,6 @@
 FactoryGirl.define do
   factory :credit do
     client
+    value '100'
   end
 end

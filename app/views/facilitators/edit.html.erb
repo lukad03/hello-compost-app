@@ -5,16 +5,14 @@
 <%= simple_form_for [@organization, @facilitator] do |facilitator| %>
 
   <% if current_user.has_role?('Admin') %>
-    <%= facilitator.association :locations, collection: locations, as: :check_boxes %>
+    <%= facilitator.association :locations, collection: organization_locations, as: :check_boxes %>
   <% else %>
 
     <%= facilitator.input :name %>
     <%= facilitator.simple_fields_for :user, @user do |user| %>
       <%= user.input :email, required: true %>
     <% end %>
-
   <% end %>
 
   <%= facilitator.button :submit, 'Update' %>
-
 <% end %>

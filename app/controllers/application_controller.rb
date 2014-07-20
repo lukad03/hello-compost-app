@@ -29,4 +29,13 @@ class ApplicationController < ActionController::Base
       return user_path(current_user)
     end
   end
+
+  def after_update_path_for(resource)
+    case current_user.rolable_type
+    when "Admin"
+      return admin_dashboard_path
+    when "Facilitator"
+      return facilitator_dashboard_path
+    end
+  end
 end

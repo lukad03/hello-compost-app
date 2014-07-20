@@ -3,7 +3,7 @@
     <ul>
     <% if organization_facilitators.any? || organization_invites.any? %>
       <% organization_facilitators.each do |facilitator| %>
-        <li><%= link_to facilitator.name, organization_facilitator_path(organization_name, facilitator) %></li>
+        <li><%= link_to facilitator.name, organization_facilitator_path(organization_name, facilitator), class: current_page(organization_facilitator_path(organization_name, facilitator)) %></li>
       <% end %>
       <% if organization_invites.any? %>
         <li class="invites">Pending Invites

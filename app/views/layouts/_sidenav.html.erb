@@ -1,9 +1,11 @@
 <nav class="side-nav <%= signup_steps %>">
   <div class="logo">
-    <a href="http://hellocompost.com"><img src="http://hellocompost.com/wp-content/themes/hello/images/hello-compost-rails.svg"></a>
+    <%= link_to root_path do %>
+      <img src="http://hellocompost.com/wp-content/themes/hello/images/hello-compost-rails.svg">
+    <% end %>
   </div>
   <ul class="nav-user">
-    <li><%= link_to current_user.rolable.name, edit_user_registration_path %></li>
+    <li><%= link_to current_user.rolable.name, edit_admin_path(current_user.rolable.id), class: current_page(edit_admin_path(current_user.rolable.id)) %></li>
     <li><%= link_to organization_name, edit_organization_path(organization_name), class: current_page(edit_organization_path(organization_name)) %></li>
   </ul>
   <ul class="nav-actions">
