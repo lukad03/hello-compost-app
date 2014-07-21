@@ -38,6 +38,7 @@
       }
 
       &:nth-child(2){
+        color: lighten($blue-gray, 30);
         font-size: .9em;
 
         a{
@@ -197,12 +198,23 @@
           background: $brand-teal;
           border-radius: 5px;
           display: block;
-          height: 22px;
+          height: 24px;
           top: 3px;
           position: absolute;
-          right: -30px;
+          right: -35px;
           text-align: center;
-          width: 22px;
+          width: 24px;
+
+          &:after{
+               content: "";
+               position: absolute;
+               top: 7px;
+               left: -6px;
+               border-right: 6px solid;
+               border-right-color: $brand-teal;
+               border-bottom: 5px solid transparent;
+               border-top: 5px solid transparent;
+          }
         }
       }
     }
@@ -218,12 +230,12 @@
           background: $brand-teal;
           border-radius: 5px;
           display: block;
-          height: 22px;
+          height: 24px;
           top: 3px;
           position: absolute;
           right: -30px;
           text-align: center;
-          width: 22px;
+          width: 24px;
         }
       }
     }
