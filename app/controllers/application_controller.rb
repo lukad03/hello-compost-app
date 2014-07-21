@@ -24,7 +24,11 @@ class ApplicationController < ActionController::Base
         return walkthrough_intro_path
       end
     when "Facilitator"
-      return facilitator_dashboard_path
+      unless (current_user.sign_in_count == 1)
+        return facilitator_dashboard_path
+      else
+        return walkthrough_intro_path
+      end
     when "Client"
       return user_path(current_user)
     end

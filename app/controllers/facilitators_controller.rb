@@ -21,7 +21,6 @@ class FacilitatorsController < ApplicationController
       if @facilitator.save
         @invite.redeemed!
         facilitator_locations(@facilitator.id)
-        flash[:success] = 'Welcome!'
         sign_in_and_redirect @facilitator.user
       else
         flash[:error] = "Your account failed to create"

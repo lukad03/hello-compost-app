@@ -24,7 +24,8 @@ describe FacilitatorsController do
         facilitator = post :create, organization_name: organization.name,
                       facilitator: facilitator_params(email)
 
-        expect{ facilitator }.to change(invite.redeemed_at)
+        expect{ facilitator }.to change{ invite.redeemed_at }
+        #can't use change this way. have to expect redeemed_at to not be nil
       end
     end
 

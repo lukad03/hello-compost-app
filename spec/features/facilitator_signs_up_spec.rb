@@ -19,7 +19,9 @@ feature 'Facilitator Registration' do
 
     click_button 'Sign Up'
 
-    expect(page).to have_text 'Welcome!'
+    expect(page).to have_text 'Welcome To Hello Compost'
+
+    visit facilitator_dashboard_path
     expect(first_location).to have_text 'Test Location'
 
   end

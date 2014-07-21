@@ -14,7 +14,7 @@ feature 'Admin registration' do
     click_button 'Sign Up'
 
     expect(page).to have_text 'Skyfall'
-    expect(page).to have_text 'Welcome To'
+    expect(page).to have_text 'Welcome To Hello Compost'
 
   end
 
