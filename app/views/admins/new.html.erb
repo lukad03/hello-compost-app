@@ -1,5 +1,6 @@
 <header>
-<h1>Sign Up</h1>
+  <img src="http://hellocompost.com/wp-content/themes/hello/images/hc-app/vertical-logo.svg">
+  <h1>Sign Up</h1>
 </header>
 
 <%= simple_form_for @admin do |admin| %>
@@ -15,6 +16,8 @@
     <% organization.input :name, required: true, label: 'Organization Name' %>
   <% end %>
 
-  <%= admin.button :submit, 'Sign Up' %>
+  <%= admin.button :submit, 'Sign Up', class: 'primary-button' %>
 
 <% end %>
+
+<%= link_to "Log in", new_user_session_path %>

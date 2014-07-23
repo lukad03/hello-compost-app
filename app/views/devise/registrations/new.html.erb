@@ -1,39 +1,13 @@
 <h2>Sign up</h2>
 
-<%
-  params[:user][:user_type] ||= 'admin'
-
-  if ["admin", "facilitator"].include? params[:user][:user_type].downcase
-    child_class_name = params[:user][:user_type].downcase.camelize
-    user_type = params[:user][:user_type].downcase
-  else
-    child_class_name = "Admin"
-    user_type = "admin"
-  end
-
-  resource.rolable = child_class_name.constantize.new if resource.rolable.nil?
-%>
-
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= devise_error_messages! %>
 
-  <div><%#= f.label :username %><br />
-  <%#= f.text_field :username, autofocus: true %></div>
-
-  <div><%= f.label :email %><br />
+  <div><%= f.label :email %>
   <%= f.email_field :email, autofocus: true %></div>
 
-  <div><%= f.label :password %><br />
+  <div><%= f.label :password %>
     <%= f.password_field :password, autocomplete: "off" %></div>
-
-  <%= fields_for resource.rolable do |rf| %>
-    <% render :partial => "#{child_class_name.underscore}_fields", :locals => { :f => rf } %>
-  <% end %>
-
-  <%= hidden_field :user, :user_type, :value => user_type %>
-
-  <div><%#= f.label :location %><br />
-    <%#= f.select :location, Location.all.collect {|x| [x.name, x.id]}, {} %></div>
 
   <div><%= f.submit "Sign up" %></div>
 <% end %>

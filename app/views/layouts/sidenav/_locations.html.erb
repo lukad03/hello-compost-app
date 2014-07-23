@@ -1,7 +1,9 @@
 <li class="locations">
   <span class="nav-title <%= current_page(new_location_path) %>">Locations
     <% if current_user.has_role?('Admin') %>
-      <%= link_to "+", new_location_path, class: 'new' %>
+      <%= link_to new_location_path, class: 'new' do %>
+        <div>+</div>
+      <% end %>
     <% end %>
   </span>
   <ul>
