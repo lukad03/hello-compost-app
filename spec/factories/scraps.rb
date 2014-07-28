@@ -3,5 +3,6 @@
 FactoryGirl.define do
   factory :scrap do
     client
+    location
   end
 end

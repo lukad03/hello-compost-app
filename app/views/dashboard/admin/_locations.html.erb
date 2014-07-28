@@ -1,0 +1,21 @@
+<ul>
+<% if organization_locations.any? %>
+  <% @admin.locations.order("name desc").each do |location| %>
+    <li>
+      <%=link_to location_path(location.name) do %>
+        <div>
+          <p><span class="location-title"><%= location.name %></span> <span><%= @admin.location_scraps(location.id) %> lbs.</span></p>
+        </div>
+      <% end %>
+    </li>
+  <% end %>
+<% else %>
+  <li>
+    <%= link_to new_location_path do %>
+      <div>
+        <p><span class="location-title">+ Add a Location</span></p>
+      </div>
+    <% end %>
+  </li>
+<% end %>
+</ul>

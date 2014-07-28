@@ -11,33 +11,41 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140710025002) do
+ActiveRecord::Schema.define(version: 20140621020108) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "admins", force: true do |t|
+    t.string   "name",            null: false
+    t.integer  "organization_id", null: false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "name"
-    t.integer  "organization_id"
   end
+
+  add_index "admins", ["organization_id"], name: "index_admins_on_organization_id", using: :btree
 
   create_table "clients", force: true do |t|
+    t.integer  "location_id",     null: false
+    t.integer  "organization_id", null: false
+    t.string   "username",        null: false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "organization_id"
-    t.integer  "location_id"
-    t.string   "username"
   end
 
+  add_index "clients", ["location_id"], name: "index_clients_on_location_id", using: :btree
+  add_index "clients", ["organization_id"], name: "index_clients_on_organization_id", using: :btree
+
   create_table "credits", force: true do |t|
+    t.integer  "value",       null: false
+    t.integer  "client_id",   null: false
+    t.integer  "location_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "user_id"
-    t.integer  "value"
-    t.integer  "client_id"
   end
+
+  add_index "credits", ["client_id"], name: "index_credits_on_client_id", using: :btree
+  add_index "credits", ["location_id"], name: "index_credits_on_location_id", using: :btree
 
   create_table "debits", force: true do |t|
     t.integer  "client_id",  null: false
@@ -86,27 +94,33 @@ ActiveRecord::Schema.define(version: 20140710025002) do
 
   create_table "locations", force: true do |t|
     t.string   "address",         null: false
+    t.string   "hours",           null: false
     t.string   "name",            null: false
     t.float    "latitude",        null: false
     t.float    "longitude",       null: false
+    t.integer  "organization_id", null: false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "organization_id"
-    t.string   "hours"
   end
 
+  add_index "locations", ["organization_id"], name: "index_locations_on_organization_id", using: :btree
+
   create_table "organizations", force: true do |t|
+    t.string   "name",       null: false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "name"
   end
 
   create_table "scraps", force: true do |t|
+    t.decimal  "weight",      precision: 5, scale: 2
+    t.integer  "client_id",                           null: false
+    t.integer  "location_id",                         null: false
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.decimal  "weight",     precision: 5, scale: 2
-    t.integer  "client_id"
   end
+
+  add_index "scraps", ["client_id"], name: "index_scraps_on_client_id", using: :btree
+  add_index "scraps", ["location_id"], name: "index_scraps_on_location_id", using: :btree
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false
@@ -121,7 +135,6 @@ ActiveRecord::Schema.define(version: 20140710025002) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "username"
     t.integer  "rolable_id"
     t.string   "rolable_type"
     t.string   "user_type"

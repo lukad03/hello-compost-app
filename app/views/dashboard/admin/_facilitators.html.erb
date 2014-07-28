@@ -1,0 +1,25 @@
+<ul>
+  <% if organization_facilitators.any? %>
+    <% organization_facilitators.each do |facilitator| %>
+      <li>
+        <div>
+            <%= facilitator.name %>
+        </div>
+      </li>
+    <% end %>
+  <% elsif organization_locations.any? %>
+    <li>
+      <%= link_to new_organization_invite_path(current_organization.name) do %>
+        <div>
+          <p><span class="facilitator-name">+ Invite a Facilitator</span></p>
+        </div>
+      <% end %>
+    </li>
+  <% else %>
+    <li>
+      <div>
+        <p><span class="facilitator-name">+ Invite a Facilitator</span></p>
+      </div>
+    </li>
+  <% end %>
+</ul>

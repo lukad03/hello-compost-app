@@ -1,39 +1,22 @@
-<header>
-<h1>Dashboard</h1>
-<h2><%= @admin.organization.name %></h2>
-</header>
+<section class="chart">
+  <%= render 'dashboard/admin/chart' %>
+</section>
 
-<% if @admin.organization.clients.exists? %>
-
-  <section class="waste_collected">
-    <h1>Waste Collected</h1>
-    <p><%= @admin.weekly_scraps %></p>
+<div class="dashboard-container">
+  <section class="key-stats">
+    <header>
+      <h1>Organization Overview</h1><span class="time-frame">- Last 4 weeks</span>
+    </header>
+    <%= render 'dashboard/admin/key_stats' %>
   </section>
 
-  <section class="visits">
-    <h1>Visits</h1>
-    <p><%= @admin.weekly_visits %></p>
+  <section class="locations">
+    <h1>Locations</h1>
+    <%= render 'dashboard/admin/locations' %>
   </section>
 
-<% else %>
-
-  <% if !@admin.organization.locations.any? %>
-
-    <section class="no-locations">
-      <p>
-        Get started by adding a location from the left.
-      </p>
-    </section>
-
-  <% elsif !@admin.organization.clients.any? %>
-
-    <section class="no-clients">
-      <p>
-        Start adding clients at your locations to begin collecting scraps and populating your dashboard.
-      </p>
-      <p>
-        In the meantime, you can add more locations or invite facilitators.
-      </p>
-    </section>
-  <% end %>
-<% end %>
+  <section class="facilitators">
+    <h1>Facilitators</h1>
+    <%= render 'dashboard/admin/facilitators' %>
+  </section>
+</div>

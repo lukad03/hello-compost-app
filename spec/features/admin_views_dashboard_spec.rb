@@ -6,7 +6,7 @@ feature 'Admin Dashboard' do
     admin_setup
 
     visit admin_dashboard_path
-    expect(page).to have_text 'Waste Collected'
+    expect(page).to have_text 'Scraps Collected'
   end
 
   def admin_setup
