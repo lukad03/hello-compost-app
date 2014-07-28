@@ -7,21 +7,18 @@
     width: 500px;
 
     header{
+      height: 200px;
 
       a{
         display: block;
-      }
-
-      h1{
-        font-size: 1.75em;
-        margin-bottom: 10px;
       }
 
       img{
         display: block;
         height: auto;
         margin: 0 auto;
-        width: 150px;
+        height: 200px;
+        width: auto;
       }
     }
 
@@ -31,6 +28,11 @@
       &.primary-button{
         margin-top: 10px;
       }
+    }
+
+    h1{
+      font-size: 1.75em;
+      margin-bottom: 5px;
     }
 
     .top-bar{

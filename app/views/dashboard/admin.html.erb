@@ -1,39 +1,46 @@
-<header>
-<h1>Dashboard</h1>
-<h2><%= @admin.organization.name %></h2>
-</header>
-
 <% if @admin.organization.clients.exists? %>
-
-  <section class="waste_collected">
-    <h1>Waste Collected</h1>
-    <p><%= @admin.weekly_scraps %></p>
+  <section class="chart">
+    <%= render 'dashboard/admin/chart' %>
   </section>
-
-  <section class="visits">
-    <h1>Visits</h1>
-    <p><%= @admin.weekly_visits %></p>
-  </section>
-
-<% else %>
-
-  <% if !@admin.organization.locations.any? %>
-
-    <section class="no-locations">
-      <p>
-        Get started by adding a location from the left.
-      </p>
-    </section>
-
-  <% elsif !@admin.organization.clients.any? %>
-
-    <section class="no-clients">
-      <p>
-        Start adding clients at your locations to begin collecting scraps and populating your dashboard.
-      </p>
-      <p>
-        In the meantime, you can add more locations or invite facilitators.
-      </p>
-    </section>
-  <% end %>
 <% end %>
+
+<div class="dashboard-container">
+
+  <header class="page-title">
+    <h1>Dashboard</h1>
+    <p>Last 4 Weeks</p>
+  </header>
+
+  <% if @admin.organization.clients.exists? %>
+
+    <section class="key-stats">
+      <%= render 'dashboard/admin/key_stats' %>
+    </section>
+
+    <section class="locations">
+      <%= render 'dashboard/admin/locations' %>
+    </section>
+
+  <% else %>
+
+    <% if !@admin.organization.locations.any? %>
+
+      <section class="no-locations">
+        <p>
+          Get started by adding a location from the left.
+        </p>
+      </section>
+
+    <% elsif !@admin.organization.clients.any? %>
+
+      <section class="no-clients">
+        <p>
+          Start adding clients at your locations to begin collecting scraps and populating your dashboard.
+        </p>
+        <p>
+          In the meantime, you can add more locations or invite facilitators.
+        </p>
+      </section>
+    <% end %>
+  <% end %>
+</div>

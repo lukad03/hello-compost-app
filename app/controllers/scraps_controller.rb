@@ -6,8 +6,8 @@ class ScrapsController < ApplicationController
   end
 
   def new
-    @location = Location.where(name: params[:location_name]).first
-    @scrap = Scrap.new
+    @location = location
+    @scrap = @location.scraps.new
     @clients = Client.where(location_id: @location.id).collect {|x| [x.username, x.id]}
   end
 
@@ -18,7 +18,7 @@ class ScrapsController < ApplicationController
       redirect_to client_path(client)
     else
       flash[:error] = 'The scrap failed to save.'
-      redirect_to new_location_scrap_path
+      redirect_to new_location_scrap_path(location)
     end
   end
 
@@ -28,8 +28,17 @@ class ScrapsController < ApplicationController
     Client.find(scrap_params[:client_id])
   end
 
+  def location
+    Location.where(name: params[:location_name]).first
+  end
+
+  def scrap_location
+    Location.find(params[:location_name])
+  end
+
   def scrap_params
-    params.require(:scrap).permit(:weight, :client_id)
+    params.require(:scrap).permit(:weight, :client_id).
+                           merge(location_id: scrap_location.id)
   end
 
 end

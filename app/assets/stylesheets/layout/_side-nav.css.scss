@@ -108,6 +108,12 @@
 
         a{
           color: white;
+
+          &.new{
+            div{
+              display: inline-block;
+            }
+          }
         }
 
         &.current{
@@ -215,6 +221,7 @@
           div{
             background: $brand-teal;
             border-radius: 3px;
+            display: block;
             font-size: .8em;
             height: 18px;
             line-height: 1.2em;
@@ -233,15 +240,32 @@
         position: relative;
 
         a.new{
-          background: $brand-teal;
-          border-radius: 5px;
-          display: block;
-          height: 24px;
-          top: 3px;
+          display: inline-block;
           position: absolute;
           right: -30px;
           text-align: center;
-          width: 24px;
+          top: 6px;
+
+          &:after{
+               content: "";
+               position: absolute;
+               top: 6px;
+               left: -4px;
+               border-right: 4px solid;
+               border-right-color: $brand-teal;
+               border-bottom: 3px solid transparent;
+               border-top: 3px solid transparent;
+          }
+
+          div{
+            background: $brand-teal;
+            border-radius: 3px;
+            display: block;
+            font-size: .8em;
+            height: 18px;
+            line-height: 1.2em;
+            width: 18px;
+          }
         }
       }
     }

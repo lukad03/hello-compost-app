@@ -1,5 +1,4 @@
 class Credit < ActiveRecord::Base
   belongs_to :client
-
-  validates :value, presence: true
+  belongs_to :location
 end

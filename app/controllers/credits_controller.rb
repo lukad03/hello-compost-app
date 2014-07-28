@@ -23,7 +23,7 @@ class CreditsController < ApplicationController
   helper_method :client
 
   def credit_params
-    params.require(:credit).permit(:value).merge(client_id: client.id)
+    params.require(:credit).permit(:value, :location_id).merge(client_id: client.id )
   end
 
 end

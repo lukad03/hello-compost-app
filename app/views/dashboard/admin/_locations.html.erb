@@ -1,0 +1,4 @@
+<% @admin.locations.each do |location| %>
+  <%= location.name %>
+  <%= @admin.location_scraps(location.id) %>
+<% end %>
