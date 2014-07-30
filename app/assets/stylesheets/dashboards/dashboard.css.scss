@@ -1,17 +1,19 @@
 .dashboard{
   .main-content{
-    padding: 1em 0 0 0;
+    padding: 0;
 
     .chart{
-      padding: 0 1em;
+      background: $brand-teal;
+      padding: 1em 3em .5em;
 
       span{
-        color: lighten($medium-gray, 30);
+        color: lighten($brand-teal,50);
         font-weight: bold;
       }
     }
 
     .dashboard-container{
+      margin-top: 2em;
       padding: 0 3em;
 
       .page-title{
@@ -25,33 +27,34 @@
 
       .key-stats{
         @include clearfix;
-        border-bottom: 1px solid $light-gray;
-        border-top: 1px solid $light-gray;
+        background: white;
+        border: 1px solid $light-gray;
         margin-top: 1em;
 
         .data-container{
+          border-right: 1px solid $light-gray;
           float: left;
-          margin-right: 4%;
-          width:30.5%;
+          width:33.33%;
 
-          &:nth-child(3){
-            margin-right: 0;
+          &:nth-child(4){
+            border-right: none;
           }
 
           .number-container{
-            margin: 10px auto 0;
-            padding: .5em 0;
+            margin: 0 auto;
+            padding: 1.5em 0 0;
             text-align: center;
 
             .data{
-              color: $brand-green;
+              color: $brand-purple;
               font-size: 2.25em;
               font-weight: bold;
               margin-top: 10px;
             }
 
             .unit{
-              color: lighten($medium-gray,30);
+              color: $brand-purple;
+              font-weight: bold;
             }
 
           }
@@ -60,10 +63,115 @@
             display: block;
             font-size: .9em;
             font-weight: bold;
-            padding: .5em 0;
+            padding: 0 0 1.25em;
             text-align: center;
             text-transform: uppercase;
           }
+        }
+
+        header{
+          border-bottom: 1px solid $light-gray;
+          padding: 1em 1em .75em;
+          h1{
+            display: inline-block;
+            font-size: 1em;
+            font-weight: bold;
+          }
+          span{
+            color: lighten($medium-gray,30);
+            display: inline-block;
+            font-size: .9em;
+            margin-left: .5em;
+          }
+        }
+      }
+
+      .locations{
+        border: 1px solid $light-gray;
+        float: left;
+        margin: 2em 4% 0 0;
+        width:47.5%;
+
+        a{
+          background: white;
+
+          &:hover{
+            div{
+              background: darken(white, 2);
+              border-left: 6px solid $brand-green;
+            }
+          }
+          div{
+            @include transition (all .1s ease-in-out);
+            background: white;
+            padding: 1em 0 .5em 1em;
+
+            span{
+              color: lighten($medium-gray,30);
+              font-size: .9em;
+
+              &.location-title{
+                color: $brand-teal;
+                font-size: 1em;
+                margin-right: 1em;
+              }
+            }
+          }
+        }
+
+        h1{
+          background: white;
+          border-bottom: 1px solid $light-gray;
+          font-size: 1em;
+          font-weight: bold;
+          padding: 1em 1em .75em;
+        }
+      }
+
+      .facilitators{
+        float: left;
+        margin-top: 2em;
+        width:47.5%;
+
+        a{
+          background: white;
+
+          div{
+            span.facilitator-name{
+              color: $brand-teal;
+            }
+          }
+
+          &:hover{
+            div{
+              background: darken(white, 2);
+              border-left: 6px solid $brand-green;
+            }
+          }
+        }
+
+        div{
+          @include transition (all .1s ease-in-out);
+          background: white;
+          padding: 1em 0 .5em 1em;
+
+          span{
+            color: lighten($medium-gray, 30);
+
+            &.facilitator-name{
+              color: darken($light-gray, 10);
+              font-size: 1em;
+              margin-right: 1em;
+            }
+          }
+        }
+
+        h1{
+          background: white;
+          border-bottom: 1px solid $light-gray;
+          font-size: 1em;
+          font-weight: bold;
+          padding: 1em 1em .75em;
         }
       }
     }
