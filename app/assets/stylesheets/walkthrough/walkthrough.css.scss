@@ -85,6 +85,12 @@
 
       li{
 
+        ul{
+          li{
+            display: none;
+          }
+        }
+
         .nav-title{
           color: lighten($blue-gray, 10);
 
@@ -92,7 +98,7 @@
             color: lighten($blue-gray, 10);
 
             &.new{
-              display: none;
+              display: none !important;
             }
           }
         }
