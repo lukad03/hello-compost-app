@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
+ruby '2.1.0'
+
 gem 'bitters'
 gem 'bourbon'
 gem 'cancan'
@@ -19,9 +21,9 @@ gem 'select2-rails'
 gem 'simple_form'
 gem 'spring',        group: :development
 gem 'uglifier', '>= 1.3.0'
+gem 'unicorn'
 
 group :development, :test do
-  gem 'pry-rails'
   gem 'factory_girl_rails'
   gem 'pry-rails'
   gem 'rspec-rails', '>= 2.14'
@@ -34,15 +36,7 @@ group :test do
   gem 'shoulda-matchers'
 end
 
-# Use ActiveModel has_secure_password
-# gem 'bcrypt', '~> 3.1.7'
-
-# Use unicorn as the app server
-# gem 'unicorn'
-
-# Use Capistrano for deployment
-# gem 'capistrano-rails', group: :development
-
-# Use debugger
-# gem 'debugger', group: [:development, :test]
+group :staging, :production do
+  gem 'rails_12factor'
+end
 
