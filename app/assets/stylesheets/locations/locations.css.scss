@@ -1,19 +1,42 @@
-.locations{
-}
-
 .locations-show{
 
   .add-scraps{
     display:block;
-    margin-top: 1em;
+    margin-top: .5em;
     text-align: center;
   }
 
   .location-content{
     padding: 0 2em;
 
+    header{
+    }
+
     .location-info{
-      margin-top: 2em;
+      margin-top: 1em;
+
+      section{
+        background: white;
+        border: 1px solid $light-gray;
+        color: $medium-gray;
+        margin-top: 1em;
+        padding: 1em;
+
+        h3{
+          border-bottom: 1px solid $light-gray;
+          font-size: 1.25em;
+          padding-bottom: .25em;
+        }
+
+        h4{
+          font-size: 1em;
+          font-weight: bold;
+          margin-top: .5em;
+        }
+        p{
+          font-size: 1em;
+        }
+      }
     }
 
     h1{

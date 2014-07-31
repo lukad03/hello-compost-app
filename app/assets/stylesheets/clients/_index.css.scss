@@ -1,16 +1,20 @@
 .clients-index{
 
   .clients-list{
+    background: white;
 
     li{
-      border-bottom: 1px solid #ccc;
+      border: 1px solid $light-gray;
       display: block;
-      height: 65px;
       margin: 0 0 10px 0;
+      padding: 1em;
+
+      &:first-child{
+        margin-top: 1em;
+      }
 
       .client-info{
         margin-left: 10px;
-        padding-top: 10px;
 
         .actions{
           float: right;

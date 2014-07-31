@@ -68,20 +68,38 @@ function initialize() {
 
 $(document).ready(function () {
   initialize();
-  $('#address-search').click(function (e) {
-  var address = $(address_search).val();
-  geocoder.geocode({ 'address': address }, function (results, status) {
-      if (status == google.maps.GeocoderStatus.OK) {
-          map.setCenter(results[0].geometry.location);
-          marker.setPosition(results[0].geometry.location);
-          $(latval).val(marker.getPosition().lat());
-          $(longval).val(marker.getPosition().lng());
-      } else {
-          alert("Geocode was not successful for the following reason: " + status);
-      }
+
+  $("#location_address").keypress(function (e) {
+    if (e.keyCode == 13) {
+      var address = $(address_search).val();
+      geocoder.geocode({ 'address': address }, function (results, status) {
+          if (status == google.maps.GeocoderStatus.OK) {
+              map.setCenter(results[0].geometry.location);
+              marker.setPosition(results[0].geometry.location);
+              $(latval).val(marker.getPosition().lat());
+              $(longval).val(marker.getPosition().lng());
+          } else {
+              alert("Geocode was not successful for the following reason: " + status);
+          }
+      });
+      e.preventDefault();
+    }
   });
-  e.preventDefault();
-});
+
+  $('#address-search').click(function (e) {
+    var address = $(address_search).val();
+    geocoder.geocode({ 'address': address }, function (results, status) {
+        if (status == google.maps.GeocoderStatus.OK) {
+            map.setCenter(results[0].geometry.location);
+            marker.setPosition(results[0].geometry.location);
+            $(latval).val(marker.getPosition().lat());
+            $(longval).val(marker.getPosition().lng());
+        } else {
+            alert("Geocode was not successful for the following reason: " + status);
+        }
+    });
+    e.preventDefault();
+  });
 
   //Add listener to marker for reverse geocoding
   google.maps.event.addListener(marker, 'drag', function () {
@@ -96,4 +114,5 @@ $(document).ready(function () {
   });
 
 });
+
 </script>

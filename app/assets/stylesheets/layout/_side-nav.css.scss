@@ -64,6 +64,15 @@
       color: white;
       margin: 1em 0;
 
+      &.logout{
+        bottom: 0;
+        position: absolute;
+
+        a{
+          color: white;
+        }
+      }
+
       &.invites{
         color: white;
         line-height: 1.3em;
